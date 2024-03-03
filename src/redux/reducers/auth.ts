@@ -1,6 +1,6 @@
 import { login } from "@redux/actions/auth";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "src/model/User";
+import { User } from "@models/User";
 import { setItem } from "src/services/apiService";
 
 export interface AuthState {
@@ -11,13 +11,14 @@ export interface AuthState {
 
 const initialState: AuthState = {
   userData: {
-    profileImage: "",
-    name: "",
+    id: 0,
+    username: "",
     email: "",
-    validOTP: false,
-    deviceType: "",
+    firstName: "",
+    lastName: "",
+    gender: "",
+    image: "",
     token: "",
-    _id: ""
   },
   isFirstTime: false,
   isLoading: false,
@@ -33,16 +34,15 @@ const authSlice = createSlice({
     changeFirstTime: (state, action: PayloadAction<boolean>) => {
       state.isFirstTime = action.payload;
     },
-
   },
   extraReducers(builder) {
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(login.fulfilled, (state,action) => {
+    builder.addCase(login.fulfilled, (state, action) => {
       state.isLoading = false;
-      setItem('userData', action.payload)
-      state.userData = action.payload
+      setItem("userData", action.payload);
+      state.userData = action.payload;
     });
     builder.addCase(login.rejected, (state) => {
       state.isLoading = false;
@@ -50,6 +50,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { changeFirstTime,saveUserData } = authSlice.actions;
+export const { changeFirstTime, saveUserData } = authSlice.actions;
 
 export default authSlice.reducer;
