@@ -15,7 +15,9 @@ module.exports = {
           '@utils': './src/utils',
           '@redux': './src/redux',
           '@constants':'./src/constants',
-          '@navigations':'./src/navigations'
+          '@navigations':'./src/navigations',
+          '@hooks':'./src/hooks',
+          '@models':'./src/models',
         },
       },
     ],
