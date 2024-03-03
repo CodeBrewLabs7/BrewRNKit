@@ -1,7 +1,7 @@
 import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Platform } from "react-native";
-import { User } from "src/model/User";
+import { User } from "@models/User";
 import { post } from "src/services/apiService";
 
 const LOGIN_ACTION_PREFIX = "/auth/login";
@@ -45,7 +45,7 @@ export const signup: AsyncThunk<User, SignupState, {}> = createAsyncThunk(
     lastLoginRequest = source;
 
     try {
-      const response = await post("/auth/signup", data);
+      const response = await post("/users/add", data);
       return response as User;
     } catch (error) {
       console.log("error", error);
