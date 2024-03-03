@@ -1,8 +1,8 @@
 import axios, { AxiosError, CancelToken } from "axios";
 import { MMKV } from "react-native-mmkv";
 import { APIS } from "./routes";
-import { ExtendedApiErrorResponse } from "src/model/ApiErrorResponse";
-import { User } from "src/model/User";
+import { ExtendedApiErrorResponse } from "@models/ApiErrorResponse";
+import { User } from "@models/User";
 import { LocalStorage } from "@typings/global";
 import { ThemeInterface } from "@redux/reducers/settings";
 export const storage = new MMKV();
@@ -12,7 +12,7 @@ interface PostOptions {
 }
 
 const api = axios.create({
-  baseURL: "http://192.168.1.5:4000/", // Replace with your API base URL
+  baseURL: "https://dummyjson.com", // Replace with your API base URL
   timeout: 10000, // Set a timeout for requests (in milliseconds)
 });
 
@@ -46,9 +46,9 @@ const handleApiError = (error: ExtendedApiErrorResponse) => {
 // Axios interceptor to add Authorization header before each request
 api.interceptors.request.use((config) => {
   // Add the Authorization header if a token is present
-  const token = storage.getString("auth_token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  const userData = getItem("userData");
+  if (!!userData) {
+    config.headers.Authorization = `Bearer ${userData.token}`;
   }
   return config;
 });
