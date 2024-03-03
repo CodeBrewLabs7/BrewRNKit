@@ -32,6 +32,12 @@
       "@navigations/*": [
         "src/navigations/*"
       ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@models/*": [
+        "src/models/*"
+      ],
     },
  }
 }
