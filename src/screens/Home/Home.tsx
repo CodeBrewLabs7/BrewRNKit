@@ -14,19 +14,18 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import useCustomQuery from "src/hooks/userUser";
-import { HomeData } from "src/model/HomeData";
+import useCustomQuery from "@hooks/useCustomQuery";
+import { HomeData } from "@models/HomeData";
 
 const Home = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
   const modalSheetRef = useRef<ModalSheetRef>(null);
-  const url = "https://dummyjson.com/products?limit=150";
 
   const {
     data: posts,
     isLoading,
     isError,
-  } = useCustomQuery<HomeData | any>(url);
+  } = useCustomQuery<HomeData | any>("/products", "?limit=150");
 
   const memoizedPosts = useMemo(() => {
     return posts;
