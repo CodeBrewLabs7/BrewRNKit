@@ -15,19 +15,21 @@ import {
   SafeAreaView,
   ScrollView,
   View,
-  useColorScheme
+  useColorScheme,
 } from "react-native";
 
 import ErrorComp from "@components/molecules/ErrorComp";
 import Loader from "@components/molecules/Loader";
-import useCustomQuery from "src/hooks/userUser";
-import { ProductsData } from "src/model/HomeData";
+import useCustomQuery from "@hooks/useCustomQuery";
+import { ProductsData } from "@models/HomeData";
 import styleFun from "./styles";
 
-
 const PostDetails = ({ route }: any): React.JSX.Element => {
-  const url = `https://dummyjson.com/products/${route.params.productId}`;
-  const { data: posts, isLoading, isError } = useCustomQuery<ProductsData>(url);
+  const {
+    data: posts,
+    isLoading,
+    isError,
+  } = useCustomQuery<ProductsData>("/products", `/${route.params.productId}`);
   const isDarkMode = useColorScheme() === "dark";
   const styles = styleFun(isDarkMode);
 
