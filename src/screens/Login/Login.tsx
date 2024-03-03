@@ -85,7 +85,7 @@ const Login = (): React.JSX.Element => {
           <View style={styles.bottomView}>
             <TextContainer text="DONT_HAVE_ACCOUNT" />
             <TextContainer
-              onPress={() => navigation.navigate("Signup", { email })}
+              onPress={() => navigation.navigate("Signup", { username })}
               text="SIGNUP"
               style={{
                 marginLeft: moderateScale(4),
