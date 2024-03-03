@@ -1,1 +1,1 @@
-export type APIS = "/auth/signup" | "/auth/login" 
+export type APIS = "/auth/login" | "/users/add" | "/products"
