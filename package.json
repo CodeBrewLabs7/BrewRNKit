@@ -1,7 +1,7 @@
 {
-  "name": "@codebrewlabs/rn-boilerplate",
+  "name": "brew-react-native-kit",
   "version": "1.0.0",
-  "description": "Boilerplate for react native",
+  "description": "Boilerplate for react native project",
   "main": "post-init.script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,9 +15,11 @@
     "native",
     "react-native",
     "boilerplate",
-    "BrewRNKit"
+    "code",
+    "brew",
+    "labs"
   ],
-  "author": "gulsherkhan0005@gmail.com",
+  "author": "Gulsher Khan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CodeBrewLabs7/BrewRNKit/issues"
