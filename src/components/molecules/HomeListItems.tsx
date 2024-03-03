@@ -11,7 +11,7 @@ import {
 } from "@screens/Onboarding/scaling";
 import React, { memo } from "react";
 import { Pressable, StyleSheet, View, useColorScheme } from "react-native";
-import { ProductsData } from "src/model/HomeData";
+import { ProductsData } from "@models/HomeData";
 
 interface HomeListItemsProps {
   item: ProductsData;
