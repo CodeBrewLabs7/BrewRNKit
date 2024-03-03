@@ -14,6 +14,7 @@ interface LoginState {
   username: string;
   password: string;
   deviceType?: Platform["OS"];
+  email?: string
 }
 
 interface SignupState extends LoginState {
