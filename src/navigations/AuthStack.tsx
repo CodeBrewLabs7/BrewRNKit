@@ -4,7 +4,7 @@ import * as Screens from "../screens";
 
 export type AuthStackParamList = {
   Login: undefined;
-  Signup: { email: string };
+  Signup: { username: string };
   Onboarding: undefined;
 };
 
