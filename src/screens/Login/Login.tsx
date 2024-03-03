@@ -22,8 +22,8 @@ import {
 
 const Login = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
-  const [email, setEmail] = useState<string>("Test5@gmail.com");
-  const [password, setPassword] = useState<string>("123456");
+  const [username, setUsername] = useState<string>("kminchelle");
+  const [password, setPassword] = useState<string>("0lelplR");
 
   const { isLoading } = useSelector((state) => state.auth);
 
@@ -31,12 +31,12 @@ const Login = (): React.JSX.Element => {
 
   const onLogin = async () => {
     let isValid = validate({
-      email,
+      name: username,
       password,
     });
 
     if (isValid == true) {
-      let res = await dispatch(login({ email, password, deviceType: Platform.OS }))
+      let res = await dispatch(login({ username, password, deviceType: Platform.OS }))
       if (res.meta.requestStatus == "rejected") {
         //@ts-ignore
         alert(res.payload.error);
@@ -57,13 +57,12 @@ const Login = (): React.JSX.Element => {
               description="WELCOME_BACK_PLEASE_ENTER_YOUR_DETAILS"
             />
             <CustomTextInput
-              value={email}
-              leftImage={imagePath.icEmail}
-              label="EMAIL"
-              placeholder="ENTER_YOUR_EMAIL"
+              value={username}
+              leftImage={imagePath.icUser}
+              label="NAME"
+              placeholder="ENTER_YOUR_NAME"
               style={{ marginBottom: verticalScale(16) }}
-              keyboardType="email-address"
-              onChangeText={setEmail}
+              onChangeText={setUsername}
             />
             <CustomTextInput
             value={password}
