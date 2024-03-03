@@ -1,6 +1,6 @@
 {
-  "name": "brewrnkit",
-  "version": "1.0.0",
+  "name": "@brewrnkit",
+  "version": "1.0.1",
   "description": "template for react native cli",
   "repository": {
     "type": "git",
