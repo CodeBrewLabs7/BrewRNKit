@@ -23,6 +23,7 @@ const Signup = (): React.JSX.Element => {
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
@@ -37,7 +38,7 @@ const Signup = (): React.JSX.Element => {
 
     if (isValid == true) {
       let res = await dispatch(
-        signup({ name, email, password, deviceType: Platform.OS })
+        signup({ name, email, username, password, deviceType: Platform.OS })
       );
       console.log("res+++", res);
       if (res.meta.requestStatus == "fulfilled") {
