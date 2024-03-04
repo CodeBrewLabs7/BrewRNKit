@@ -1,6 +1,6 @@
 {
   "name": "brew-react-native-kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Boilerplate for react native project",
   "main": "post-init.script.js",
   "scripts": {
