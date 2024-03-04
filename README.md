@@ -1,4 +1,4 @@
-# myapp
+# BrewRNKit
 ⚛️ React Native Boilerplate: Jumpstart your app development with essential configurations for React Native projects. Includes libraries, navigation, state management, and styling setup. Streamline your workflow and focus on building amazing mobile experiences! 📱✨
 
 <!-- ![React Native Boilerplate License](https://img.shields.io/github/license/CodeBrewLabs7/BrewRNKit) -->
@@ -11,6 +11,17 @@
 ### Preview of myapp
 
 https://github.com/CodeBrewLabs7/myapp/assets/56266123/e9a51ea0-f056-4b14-b4ef-f01eef8cc7de
+
+
+# Key Features
+
+- **Handle Light/Dark Mode**: Built-in support for toggling between light and dark modes.
+- **Localization**: Easily localize your app with internationalization support.
+- **Global State Management**: Integration with Redux Toolkit for managing global state.
+- **Async Data Fetching**: Utilize @tanstack/react-query for efficient asynchronous data fetching.
+- **Authentication Stack**: Boilerplate includes authentication stack for user authentication.
+- **Main Stack**: Configured main stack for navigation and UI structure.
+- **And Many More**: Additional features and configurations to streamline development.
 
 
 ## Requirements
