@@ -1,8 +1,8 @@
 {
   "name": "brew-react-native-kit",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Boilerplate for react native project",
-  "main": "post-init.script.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
