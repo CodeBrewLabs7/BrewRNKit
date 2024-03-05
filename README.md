@@ -8,6 +8,18 @@
 
 ## 📱 Screenshot
 
+
+  <div>
+  <img src="./documents/images/home_ar_dark.png" alt="My Image" width="160">
+  <img src="./documents/images/setting_white.png" alt="My Image" width="160">
+  <img src="./documents/images/home_en_dark.png" alt="My Image" width="160">
+      <img src="./documents/images/onboarding.png" alt="My Image" width="160">
+  <img src="./documents/images/login-ar.png" alt="My Image" width="160">
+  <img src="./documents/images/login_en.png" alt="My Image" width="160">
+  </div>
+
+
+
 ### Preview of myapp
 
 https://github.com/CodeBrewLabs7/myapp/assets/56266123/e9a51ea0-f056-4b14-b4ef-f01eef8cc7de
