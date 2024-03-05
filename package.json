@@ -1,6 +1,6 @@
 {
   "name": "brew-react-native-kit",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Boilerplate for react native project",
   "main": "post-init.script.js",
   "scripts": {
@@ -19,14 +19,13 @@
     "brew",
     "labs"
   ],
-  "dependencies": {
-    "kleur": "^4.1.4",
-    "prompts": "^2.4.1"
-  },
   "author": "Gulsher Khan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CodeBrewLabs7/BrewRNKit/issues"
   },
-  "homepage": "https://github.com/CodeBrewLabs7/BrewRNKit#readme"
+  "homepage": "https://github.com/CodeBrewLabs7/BrewRNKit#readme",
+  "dependencies": {
+    "ora": "^8.0.1"
+  }
 }
