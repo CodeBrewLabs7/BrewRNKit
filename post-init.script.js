@@ -1,9 +1,47 @@
 #!/usr/bin/env node
-const ora = require('ora');
 const { spawn } = require('child_process');
 const readline = require('readline');
+const {green, blue, } = require('kleur');
 
-const spinner = ora('Executing post init ');
+
+function printCenteredAsciiArt(asciiArt) {
+    const terminalWidth = process.stdout.columns;
+    const lines = asciiArt.split('\n');
+    const maxLength = lines.reduce((max, line) => Math.max(max, line.length), 0);
+    const leftPadding = Math.max(Math.floor((terminalWidth - maxLength) / 2), 0);
+
+    const centeredAsciiArt = lines.map(line => ' '.repeat(leftPadding) + line).join('\n');
+
+    console.log(green(centeredAsciiArt));
+}
+
+const asciiArt = `
+                                       *@@      
+                         .@&      &@(            
+                          &@*     @@             
+                           .@@     @@/           
+              #@&           (@/     .@/          
+            @@%            (@%      /@/        
+           @@*                     *@,                             
+          ,@@                                      *@@          @@.           
+          *@@                                      *@@           (@@&         
+          *@@    ************,.                    *@@              &@@,      
+          *@@   ********************************   *@@                (@@%    
+       ,@@#    **********************************,   .@@#              (@@%
+        (@@,   ,*********************************    %@@.            &@@. 
+          &@&   ********************************   ,@@.            /@@#   
+          .@@   .*******************************   /@            @@@,     
+          .@@   .*******************************   /@@        /@@%        
+          .@@   .*******************************   /@@      &@@,          
+           @@   .*******************************   /@@     /%             
+           @@.  .*******************************   #@#                                          
+            (@@,                                 #@@                       
+               #/                               @*                       
+                                                                                                      
+`;
+
+printCenteredAsciiArt(asciiArt);
+
 
 function prompt(question) {
     const rl = readline.createInterface({
@@ -18,8 +56,6 @@ function prompt(question) {
     });
 }
 
-spinner.start();
-
 prompt('Do you want to install required gems? (y/N): ')
     .then((installGems) => {
         if (installGems) {
@@ -29,35 +65,35 @@ prompt('Do you want to install required gems? (y/N): ')
             gemInstall.on('close', (code) => {
                 if (code === 0) {
                     console.log('Gems installation completed');
-                    installPods();
+                    processComplete();
                 } else {
-                    spinner.fail('Gems installation failed');
+                    console.log('Gems installation failed');
                     process.exit(1);
                 }
             });
-        } else {
-            installPods();
-        }
+        } 
     })
     .catch((error) => {
-        spinner.fail('Error:', error);
+        console.log('Error:', error);
         process.exit(1);
     });
 
-function installPods() {
-    // Install pods
-    const installPods = spawn('pod', ['install'], { cwd: 'ios' });
 
-    installPods.stdout.on('data', (data) => console.log(`stdout: ${data}`));
 
-    installPods.stderr.on('data', (data) => console.error(`stderr: ${data}`));
-
-    installPods.on('close', (code) => {
-        if (code === 0) {
-            spinner.succeed('Pods installation completed');
-        } else {
-            spinner.fail('Pods installation failed');
-            process.exit(1);
-        }
-    });
+function processComplete() {
+    console.log('\n');
+    console.log(
+       blue('🚀 React-Native Boilerplate initialized successfully! 🚀')
+    );
+    console.log('\n');
+    console.log(
+        green('👏 Congratulations! Your project is now set up and ready to go.')
+    );
+    console.log('\n');
+    
+    console.log(
+        green('🎉 Thank you for choosing our boilerplate. Happy coding! 🎉')
+    );
+    console.log('\n');
+    process.exit(0);
 }
