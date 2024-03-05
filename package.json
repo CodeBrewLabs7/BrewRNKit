@@ -1,6 +1,6 @@
 {
   "name": "brew-react-native-kit",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Boilerplate for react native project",
   "main": "post-init.script.js",
   "scripts": {
@@ -19,6 +19,10 @@
     "brew",
     "labs"
   ],
+  "dependencies": {
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.1"
+  },
   "author": "Gulsher Khan",
   "license": "ISC",
   "bugs": {
