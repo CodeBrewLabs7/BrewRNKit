@@ -1,11 +1,10 @@
 {
   "name": "brew-react-native-kit",
-  "version": "1.0.16",
+  "version": "1.0.19",
   "description": "Boilerplate for react native project",
   "main": "post-init.script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./post-init.script.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -27,9 +26,6 @@
   },
   "homepage": "https://github.com/CodeBrewLabs7/BrewRNKit#readme",
   "dependencies": {
-    "child_process": "^1.0.2",
-    "kleur": "^4.1.5",
-    "prompts": "^2.4.1",
-    "readline": "^1.3.0"
+    "kleur": "^4.1.5"
   }
 }

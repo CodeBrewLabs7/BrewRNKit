@@ -1,8 +1,5 @@
 #!/usr/bin/env node
-const { spawn } = require('child_process');
-const readline = require('readline');
-const {green, blue, } = require('kleur');
-
+const {green, blue, white,gray } = require('kleur');
 
 function printCenteredAsciiArt(asciiArt) {
     const terminalWidth = process.stdout.columns;
@@ -37,48 +34,13 @@ const asciiArt = `
            @@.  .*******************************   #@#                                          
             (@@,                                 #@@                       
                #/                               @*                       
-                                                                                                      
+                        ${white('Code Brew Labs')}  
+                ${gray('Software company in Chandigarh')}                                                   
 `;
 
 printCenteredAsciiArt(asciiArt);
 
-
-function prompt(question) {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-    return new Promise((resolve) => {
-        rl.question(question, (answer) => {
-            rl.close();
-            resolve(answer.toLowerCase() === 'y' || answer.toLowerCase() === 'yes');
-        });
-    });
-}
-
-prompt('Do you want to install required gems? (y/N): ')
-    .then((installGems) => {
-        if (installGems) {
-            const gemInstall = spawn('gem', ['install', 'cocoapods']);
-            gemInstall.stdout.on('data', (data) => console.log(`stdout: ${data}`));
-            gemInstall.stderr.on('data', (data) => console.error(`stderr: ${data}`));
-            gemInstall.on('close', (code) => {
-                if (code === 0) {
-                    console.log('Gems installation completed');
-                    processComplete();
-                } else {
-                    console.log('Gems installation failed');
-                    process.exit(1);
-                }
-            });
-        } 
-    })
-    .catch((error) => {
-        console.log('Error:', error);
-        process.exit(1);
-    });
-
-
+processComplete();
 
 function processComplete() {
     console.log('\n');
