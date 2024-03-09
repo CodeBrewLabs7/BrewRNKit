@@ -5,6 +5,7 @@ import store from "@redux/store";
 import { getItem } from "src/services/apiService";
 import { Appearance } from "react-native";
 import { saveDefaultLanguage, saveDefaultTheme } from "@redux/reducers/settings";
+import { UnistylesRuntime, useInitialTheme } from "react-native-unistyles";
 
 const { dispatch } = store;
 
@@ -18,7 +19,7 @@ export const checkLocalStorage = () =>{
      let defaultTheme = getItem("defaultTheme");
      if (!!defaultTheme) {
        //@ts-ignore
-       Appearance.setColorScheme(defaultTheme.myTheme);
+       UnistylesRuntime.setTheme(defaultTheme.myTheme)
        //@ts-ignore
        dispatch(saveDefaultTheme(defaultTheme));
      }

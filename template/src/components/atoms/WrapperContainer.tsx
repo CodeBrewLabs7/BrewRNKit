@@ -1,5 +1,4 @@
-import type { PropsWithChildren } from "react";
-import React from "react";
+import React,{PropsWithChildren} from "react";
 import { SafeAreaView, StatusBar, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -39,8 +38,5 @@ const stylesheet = createStyleSheet((theme) => ({
   container: {
     flex: 1,
     backgroundColor: theme.colors.background,
-  },
-  text: {
-    color: theme.colors.typography,
-  },
+  }
 }));

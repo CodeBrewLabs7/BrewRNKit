@@ -36,5 +36,6 @@
   "CHANGE_THEME":"Change Theme",
   "CHANGE_LANGUAGE":"Change Language",
   "LOGOUT": "Logout",
-  "SKIP":"Skip"
+  "SKIP":"Skip",
+  "SOMETHING_WENT_WRONG":"Oops...!!! Something Wen't Wrong"
 }

@@ -10,8 +10,7 @@ import { HomeStackParamList } from "@navigations/MainStack";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { moderateScale } from "@utils/scaling";
 import React, { useCallback, useMemo, useRef } from "react";
-import {ActivityIndicator,FlatList,View} from "react-native";
-import { useStyles } from "react-native-unistyles";
+import { ActivityIndicator, FlatList, View } from "react-native";
 
 const Home = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
@@ -33,8 +32,6 @@ const Home = (): React.JSX.Element => {
     }
   }, []);
 
-
- 
   return (
     <WrapperContainer>
       <View style={{ marginHorizontal: moderateScale(20) }}>

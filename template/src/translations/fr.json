@@ -35,5 +35,6 @@
   "CHANGE_THEME": "Change le thème",
   "CHANGE_LANGUAGE": "Changer de langue",
   "LOGOUT": "Se déconnecter",
-  "SKIP": "Sauter"
+  "SKIP": "Sauter",
+  "SOMETHING_WENT_WRONG":"Oops...!!! Quelque chose n'allait pas mal"
 }

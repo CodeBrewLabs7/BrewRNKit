@@ -1,16 +1,14 @@
-import React from "react";
-import {
-  useColorScheme,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  StyleSheet,
-  ActivityIndicator,
-} from "react-native";
 import { TextContainer } from "@components/atoms";
-import Colors from "@constants/colors";
 import { moderateScale } from "@utils/scaling";
+import React from "react";
+import { ActivityIndicator, Pressable, PressableProps } from "react-native";
+import {
+  UnistylesRuntime,
+  createStyleSheet,
+  useStyles,
+} from "react-native-unistyles";
 
-interface CustomButtonProps extends TouchableOpacityProps {
+interface CustomButtonProps extends PressableProps {
   label: string;
   style?: {};
   textStyle?: {};
@@ -24,40 +22,36 @@ const ButtonContainer: React.FC<CustomButtonProps> = ({
   textStyle,
   ...props
 }) => {
-  const isDarkMode = useColorScheme() === "dark";
+  const { styles, theme } = useStyles(stylesheet);
+  const isDarkMode = UnistylesRuntime.themeName === "dark";
+
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={{
-        ...styles.btnStyle,
-        backgroundColor: isDarkMode ? Colors.white : Colors.black,
-        ...style,
-      }}
-      {...props}
-    >
+    <Pressable style={[styles.btnStyle(isDarkMode), style]} {...props}>
       {isLoading ? (
-        <ActivityIndicator color={isDarkMode? Colors.black: Colors.white} />
+        <ActivityIndicator
+          color={isDarkMode ? theme.colors.black : theme.colors.white}
+        />
       ) : (
         <TextContainer
           text={label}
           style={{
-            color: isDarkMode ? Colors.black : Colors.white,
+            color: isDarkMode ? theme.colors.black : theme.colors.white,
             ...textStyle,
           }}
         />
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
-const styles = StyleSheet.create({
-  btnStyle: {
+const stylesheet = createStyleSheet((theme) => ({
+  btnStyle: (isDarkMode: boolean) => ({
     height: moderateScale(52),
-    backgroundColor: Colors.black,
+    backgroundColor: isDarkMode ? theme.colors.white : theme.colors.black,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: moderateScale(8),
-  },
-});
+  }),
+}));
 
 export default React.memo(ButtonContainer);

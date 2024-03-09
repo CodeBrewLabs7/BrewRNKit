@@ -30,7 +30,7 @@ const TextContainer: React.FC<TextContainterProps> = ({
     </Text>
   );
 };
-export default TextContainer;
+export default React.memo(TextContainer);
 
 const stylesheet = createStyleSheet((theme) => ({
   sectionTitle: {

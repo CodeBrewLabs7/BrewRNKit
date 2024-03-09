@@ -1,21 +1,9 @@
-import React from 'react';
-import Colors from '@constants/colors';
-import { ImageProps, Image as RNImage, useColorScheme } from 'react-native';
+import React from "react";
+import { ImageProps, Image as RNImage } from "react-native";
+import { useStyles } from "react-native-unistyles";
 
-
-// Define the component
 const ImageContainer: React.FC<ImageProps> = ({ ...rest }) => {
-
-  const isDarkMode = useColorScheme() === 'dark';
-
-  return (
-    <RNImage
-      tintColor={isDarkMode ? Colors.white: Colors.black}
-      {...rest}
-    />
-  );
+  const { theme } = useStyles();
+  return <RNImage tintColor={theme.colors.typography} {...rest} />;
 };
-
-
-
 export default ImageContainer;

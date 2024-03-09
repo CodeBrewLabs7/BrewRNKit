@@ -1,23 +1,37 @@
 //import libraries
-import {TextContainer,WrapperContainer} from "@components/atoms";
-import Colors from "@constants/colors";
+import { TextContainer, WrapperContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import React, { useRef, useState } from "react";
-import {Image,ScrollView,StyleSheet,View,useColorScheme} from "react-native";
 import { AuthStackParamList } from "@navigations/AuthStack";
-import { height, moderateScale, scale, verticalScale, width } from "@utils/scaling";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import {
+  height,
+  moderateScale,
+  scale,
+  verticalScale,
+  width,
+} from "@utils/scaling";
+import React, { useRef, useState } from "react";
+import { Image, ScrollView, View, useColorScheme } from "react-native";
+import {
+  UnistylesRuntime,
+  createStyleSheet,
+  useStyles,
+} from "react-native-unistyles";
 
 const onBoardData = [{}, {}, {}];
 
 const Onboarding = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [index, setIndex] = useState<number>(0);
-  const isDarkMode = useColorScheme() === "dark";
+  const { styles, theme } = useStyles(stylesheet);
+
+  const isDarkMode = UnistylesRuntime.themeName === "dark";
   const scrollRef = useRef<any>();
 
   const handleScroll = (event: any) => {
-    const newIndex = Number((event.nativeEvent.contentOffset.x / (width - 20)).toFixed(0));
+    const newIndex = Number(
+      (event.nativeEvent.contentOffset.x / (width - 20)).toFixed(0)
+    );
     setIndex(newIndex);
   };
 
@@ -76,23 +90,15 @@ const Onboarding = (): React.JSX.Element => {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             {onBoardData.map((val, i) => {
               return (
-                <View
-                  key={String(i)}
-                  style={{
-                    ...styles.dotStyle,
-                    backgroundColor:
-                      i == index
-                        ? isDarkMode
-                          ? Colors.light
-                          : Colors.black
-                        : Colors.grey,
-                  }}
-                />
+                <View key={String(i)} style={styles.dotStyle(i === index)} />
               );
             })}
           </View>
           <View>
-            <TextContainer text="SKIP" onPress={()=>navigation.navigate('Login')} />
+            <TextContainer
+              text="SKIP"
+              onPress={() => navigation.navigate("Login")}
+            />
           </View>
         </View>
       </View>
@@ -100,25 +106,25 @@ const Onboarding = (): React.JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   container: {
     flex: 1,
     justifyContent: "space-between",
     marginVertical: verticalScale(16),
   },
-  dotStyle: {
+  dotStyle: (isSelected: boolean) => ({
     height: moderateScale(6),
     width: moderateScale(6),
     borderRadius: moderateScale(4),
-    backgroundColor: Colors.black,
     marginRight: moderateScale(8),
-  },
+    backgroundColor: isSelected ? theme.colors.darkwhite : theme.colors.grey,
+  }),
   flexView: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: moderateScale(16),
   },
-});
+}));
 
 export default Onboarding;

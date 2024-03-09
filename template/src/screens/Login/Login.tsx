@@ -15,15 +15,17 @@ import React, { useState } from "react";
 import {
   Keyboard,
   Platform,
-  StyleSheet,
   TouchableWithoutFeedback,
-  View,
+  View
 } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const Login = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [username, setUsername] = useState<string>("kminchelle");
   const [password, setPassword] = useState<string>("0lelplR");
+
+  const { styles } = useStyles(stylesheet);
 
   const { isLoading } = useSelector((state) => state.auth);
 
@@ -99,7 +101,8 @@ const Login = (): React.JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
+
+const stylesheet = createStyleSheet(() => ({
   container: {
     flex: 1,
     marginHorizontal: moderateScale(16),
@@ -110,6 +113,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
   },
-});
+}));
+
+
 
 export default Login;

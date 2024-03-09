@@ -1,17 +1,13 @@
 import { TextContainer } from "@components/atoms";
 import RemoteImage from "@components/atoms/RemoteImage";
-import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
+import { ProductsData } from "@models/HomeData";
 import { HomeStackParamList } from "@navigations/MainStack";
 import { NavigationProp } from "@react-navigation/native";
-import {
-  moderateScale,
-  scale,
-  verticalScale,
-} from "@utils/scaling";
+import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { memo } from "react";
-import { Pressable, StyleSheet, View, useColorScheme } from "react-native";
-import { ProductsData } from "@models/HomeData";
+import { Pressable, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 interface HomeListItemsProps {
   item: ProductsData;
@@ -20,7 +16,7 @@ interface HomeListItemsProps {
 
 const HomeListItems: React.FC<HomeListItemsProps> = memo(
   ({ item, navigation }) => {
-    const isDarkMode = useColorScheme() === "dark";
+    const { styles } = useStyles(stylesheet);
     return (
       <Pressable
         style={styles.container}
@@ -61,19 +57,13 @@ const HomeListItems: React.FC<HomeListItemsProps> = memo(
               <TextContainer
                 isDynamicText
                 text="Regulators"
-                style={{
-                  fontSize: scale(12),
-                  color: isDarkMode ? Colors.white50 : Colors.black50,
-                }}
+                style={styles.textStyle}
               />
             </View>
             <TextContainer
               isDynamicText
               text="June 14 2023"
-              style={{
-                fontSize: scale(12),
-                color: isDarkMode ? Colors.white50 : Colors.black50,
-              }}
+              style={styles.textStyle}
             />
           </View>
         </View>
@@ -82,7 +72,7 @@ const HomeListItems: React.FC<HomeListItemsProps> = memo(
   }
 );
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   container: {
     flexDirection: "row",
     alignItems: "center",
@@ -97,7 +87,7 @@ const styles = StyleSheet.create({
   profileImage: {
     width: moderateScale(134),
     height: moderateScale(134),
-    backgroundColor: Colors.grey,
+    backgroundColor: theme.colors.grey,
     borderRadius: moderateScale(24),
     marginRight: moderateScale(16),
   },
@@ -106,5 +96,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-});
+  textStyle: {
+    fontSize: scale(12),
+    color: theme.colors.opacity50,
+  },
+}));
+
 export default HomeListItems;

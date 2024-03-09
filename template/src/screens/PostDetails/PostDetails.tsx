@@ -5,24 +5,17 @@ import {
   WrapperContainer,
 } from "@components/atoms";
 import HeaderComp from "@components/molecules/HeaderComp";
-import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale, width } from "@utils/scaling";
 import React from "react";
-import {
-  ImageBackground,
-  SafeAreaView,
-  ScrollView,
-  View,
-  useColorScheme,
-} from "react-native";
-
+import { ImageBackground, SafeAreaView, ScrollView, View } from "react-native";
 import ErrorComp from "@components/molecules/ErrorComp";
 import Loader from "@components/molecules/Loader";
 import useCustomQuery from "@hooks/useCustomQuery";
 import { ProductsData } from "@models/HomeData";
-import styleFun from "./styles";
+import { UnistylesRuntime, useStyles } from "react-native-unistyles";
+import stylesheet from "./styles";
 
 const PostDetails = ({ route }: any): React.JSX.Element => {
   const {
@@ -30,8 +23,10 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
     isLoading,
     isError,
   } = useCustomQuery<ProductsData>("/products", `/${route.params.productId}`);
-  const isDarkMode = useColorScheme() === "dark";
-  const styles = styleFun(isDarkMode);
+
+  const { styles } = useStyles(stylesheet);
+  const { theme } = useStyles();
+  const isDarkMode = UnistylesRuntime.themeName === "dark";
 
   if (isLoading) return <Loader />;
   if (isError) return <ErrorComp />;
@@ -40,7 +35,7 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
     <WrapperContainer isSafeAreaView={false}>
       <ScrollView
         style={{
-          backgroundColor: isDarkMode ? Colors.dark : Colors.light,
+          backgroundColor: theme.colors.background,
           overflow: "visible",
         }}
       >
@@ -58,7 +53,7 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
               isDynamicText
               text={posts?.description || ""}
               style={{
-                color: Colors.white,
+                color: theme.colors.white,
                 fontSize: scale(24),
                 fontFamily: fontFamily.semiBold,
               }}
@@ -66,9 +61,8 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
             <TextContainer
               isDynamicText
               text={posts?.description || ""}
-              // numberOfLines={4}
               style={{
-                color: Colors.white,
+                color: theme.colors.white,
                 fontSize: scale(14),
               }}
             />
@@ -76,15 +70,15 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
         </ImageBackground>
 
         <View
-          style={{
-            ...styles.containerView,
-            backgroundColor: isDarkMode ? Colors.dark : Colors.light,
-          }}
+          style={[
+            styles.containerView,
+            { backgroundColor: theme.colors.background },
+          ]}
         >
           <View
             style={{
               ...styles.headerLine,
-              backgroundColor: isDarkMode ? Colors.light : Colors.gray2,
+              backgroundColor: theme.colors.opacity50,
             }}
           />
 
@@ -94,7 +88,7 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
               <TextContainer
                 isDynamicText
                 text="Over 35k Happy Customers"
-                style={{ color: Colors.white }}
+                style={{ color: theme.colors.white }}
               />
             </View>
             <ButtonContainer
@@ -132,12 +126,14 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
               label="ADD_COMMENTS"
               style={{
                 ...styles.btnStyle,
-                backgroundColor: isDarkMode ? Colors.light : Colors.black,
+                backgroundColor: isDarkMode
+                  ? theme.colors.white
+                  : theme.colors.black,
                 paddingHorizontal: moderateScale(10),
               }}
               textStyle={{
                 ...styles.btnTextStyle,
-                color: isDarkMode ? Colors.black : Colors.light,
+                color: isDarkMode ? theme.colors.black : theme.colors.white,
                 fontSize: scale(10),
               }}
             />
@@ -146,7 +142,7 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
           <View
             style={{
               ...styles.headerLine,
-              backgroundColor: isDarkMode ? Colors.light : Colors.gray2,
+              backgroundColor: theme.colors.grey,
               width: "100%",
               height: moderateScale(1),
             }}
@@ -154,7 +150,7 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
 
           <TextContainer
             isDynamicText
-            style={{ color: Colors.blue }}
+            style={{ color: theme.colors.blue }}
             text={posts?.brand || ""}
           />
           <TextContainer

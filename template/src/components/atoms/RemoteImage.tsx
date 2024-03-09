@@ -9,6 +9,4 @@ const RemoteImage: React.FC<ImageProps> = ({ ...rest }) => {
   );
 };
 
-
-
-export default RemoteImage;
+export default React.memo(RemoteImage);

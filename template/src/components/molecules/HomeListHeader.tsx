@@ -1,27 +1,29 @@
 import { TextContainer } from "@components/atoms";
-import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { memo } from "react";
-import { StyleSheet, View, useColorScheme } from "react-native";
+import { View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 import SearchBar from "./SearchBar";
 
-const HomeListHeader: React.FC= memo(() => {
-  const isDarkMode = useColorScheme() === "dark";
+const HomeListHeader: React.FC = memo(() => {
+  const { styles } = useStyles(stylesheet);
   return (
     <>
-    <SearchBar textStyle={{
-      color: isDarkMode? Colors.white50: Colors.black50
-    }} title="FIND_INTERESTING_BLOG" style={styles.searchBarStyle} />
+      <SearchBar
+        textStyle={styles.textStyle}
+        title="FIND_INTERESTING_BLOG"
+        style={styles.searchBarStyle}
+      />
       <View style={styles.flexRow}>
         <TextContainer text="RECOMMEND" style={styles.recommendTextStyle} />
-        <TextContainer text="SEE_MORE" style={styles.seemoreStyle} />
+        <TextContainer text="SEE_MORE" />
       </View>
     </>
   );
 });
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   searchBarStyle: {
     marginTop: verticalScale(28),
     marginBottom: verticalScale(20),
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
     fontSize: scale(18),
     fontFamily: fontFamily.medium,
   },
-  seemoreStyle: {}
-});
+  textStyle: {
+    color: theme.colors.typography
+  },
+}));
+
 export default React.memo(HomeListHeader);
