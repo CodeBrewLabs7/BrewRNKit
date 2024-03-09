@@ -1,43 +1,41 @@
 import fontFamily from "@constants/fontFamily";
 import { scale } from "@utils/scaling";
-import i18n from 'i18next';
-import React from 'react';
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, Text, TextProps, useColorScheme } from "react-native";
-import Colors from "src/constants/colors";
+import { Text, TextProps } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 interface TextContainterProps extends TextProps {
-    text: string | '';
-    style?: object,
-    variableValue?: null,
-    isDynamicText?: boolean,
+  text: string | "";
+  style?: object;
+  variableValue?: null;
+  isDynamicText?: boolean;
 }
 
-const TextContainer: React.FC<TextContainterProps> = ({ text, variableValue, isDynamicText=false, style, ...rest }) => {
-    const isDarkMode = useColorScheme() === 'dark';
-    const { t } = useTranslation();
-    return (
-        <Text
-            style={{
-                ...styles.sectionTitle,
-                color: isDarkMode ? Colors.white : Colors.black,
-                textAlign: i18n.language == 'ar' ? 'right' : 'left',
-                fontFamily:fontFamily.regular,
-                ...style
-            }}
-            {...rest}
-        >
-            {isDynamicText? text: t(text)}
-        </Text>
-    );
-}
-export default TextContainer
+const TextContainer: React.FC<TextContainterProps> = ({
+  text,
+  variableValue,
+  isDynamicText = false,
+  style,
+  ...rest
+}) => {
+  const { t } = useTranslation();
+  const { styles } = useStyles(stylesheet);
+  return (
+    <Text
+      style={[styles.sectionTitle, style]}
+      {...rest}
+    >
+      {isDynamicText ? text : t(text)}
+    </Text>
+  );
+};
+export default TextContainer;
 
-const styles = StyleSheet.create({
-    sectionTitle: {
-        fontSize: scale(14),
-        fontFamily:fontFamily.regular
-
-    },
-});
-
+const stylesheet = createStyleSheet((theme) => ({
+  sectionTitle: {
+    fontSize: scale(14),
+    fontFamily: fontFamily.regular,
+    color: theme.colors.typography
+  }
+}));
