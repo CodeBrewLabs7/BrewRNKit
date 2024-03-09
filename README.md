@@ -36,6 +36,47 @@ https://github.com/CodeBrewLabs7/myapp/assets/56266123/e9a51ea0-f056-4b14-b4ef-f
 - **And Many More**: Additional features and configurations to streamline development.
 
 
+## Libraries Using BrewRNKit 📚
+
+<table>
+<tr>
+<td>
+
+- [@react-navigation/native](https://www.npmjs.com/package/@react-navigation/native)
+- [react-native-screens](https://www.npmjs.com/package/react-native-screens)
+- [react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context)
+- [@react-navigation/native-stack](https://www.npmjs.com/package/@react-navigation/native-stack)
+- [react-native-mmkv](https://www.npmjs.com/package/react-native-mmkv)
+- [react-native-masked-view](https://github.com/react-native-masked-view/masked-view)
+- [react-native-gesture-handler](https://www.npmjs.com/package/react-native-gesture-handler)
+
+</td>
+
+<td>
+  
+- [react-redux](https://www.npmjs.com/package/react-redux)
+- [@reduxjs/toolkit](https://www.npmjs.com/package/@reduxjs/toolkit)
+- [@tanstack/react-query](https://www.npmjs.com/package/@tanstack/react-query)
+- [i18next](https://www.npmjs.com/package/i18next)
+- [@os-team/i18next-react-native-language-detector](https://www.npmjs.com/package/@os-team/i18next-react-native-language-detector)
+- [intl-pluralrules](https://www.npmjs.com/package/intl-pluralrules)
+- [react-i18next](https://www.npmjs.com/package/react-i18next)
+  
+</td>
+<td>
+  
+- [axios](https://www.npmjs.com/package/axios)
+- [@testing-library/react-native](https://www.npmjs.com/package/@testing-library/react-native)
+- [react-native-keyboard-aware-scroll-view](https://www.npmjs.com/package/react-native-keyboard-aware-scroll-view)
+- [react-native-reanimated](https://www.npmjs.com/package/react-native-reanimated)
+- [react-native-restart](https://www.npmjs.com/package/react-native-restart)
+- [react-native-unistyles](https://www.npmjs.com/package/react-native-unistyles)
+
+</td>
+</tr>
+</table>
+
+
 ## Requirements
 
 Node 18 or greater is required. Development for iOS requires a Mac and Xcode 10 or up, and will target iOS 11 and up.
