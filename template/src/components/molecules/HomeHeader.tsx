@@ -1,18 +1,10 @@
 import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import {
-  moderateScale,
-  scale,
-  verticalScale,
-} from "@utils/scaling";
+import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { PropsWithChildren } from "react";
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  View,
-} from "react-native";
+import { Image, Pressable, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type SectionProps = PropsWithChildren<{
   title?: string;
@@ -21,6 +13,7 @@ type SectionProps = PropsWithChildren<{
 }>;
 
 function HeaderComp(props: SectionProps): React.JSX.Element {
+  const { styles } = useStyles(stylesheet);
   return (
     <>
       <View style={{ ...styles.headerStyle, ...props.style }}>
@@ -28,11 +21,7 @@ function HeaderComp(props: SectionProps): React.JSX.Element {
           source={{
             uri: "https://m.media-amazon.com/images/I/31Cd9UQp6eL._AC_UF1000,1000_QL80_.jpg",
           }}
-          style={{
-            height: moderateScale(50),
-            width: moderateScale(50),
-            borderRadius: moderateScale(25),
-          }}
+          style={styles.profileImage}
         />
         <TextContainer style={styles.titleStyle} text={`${props.title}`} />
 
@@ -45,7 +34,7 @@ function HeaderComp(props: SectionProps): React.JSX.Element {
 }
 export default React.memo(HeaderComp);
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   headerStyle: {
     flexDirection: "row",
     alignItems: "center",
@@ -65,4 +54,9 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(24),
     fontFamily: fontFamily.regular,
   },
-});
+  profileImage: {
+    height: moderateScale(50),
+    width: moderateScale(50),
+    borderRadius: moderateScale(25),
+  },
+}));

@@ -5,17 +5,18 @@ import { CustomTextInput } from "@components/molecules";
 import AuthHeader from "@components/molecules/AuthHeader";
 import RememberMe from "@components/molecules/RememberMe";
 import imagePath from "@constants/imagePath";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { moderateScale, verticalScale } from "@utils/scaling";
-import React, { useState } from "react";
-import { Platform, StyleSheet, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { AuthStackParamList } from "@navigations/AuthStack";
-import { AppDispatch } from "@redux/store";
-import { useDispatch } from "react-redux";
-import validate from "@utils/validations";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { signup } from "@redux/actions/auth";
 import { useSelector } from "@redux/hooks";
+import { AppDispatch } from "@redux/store";
+import { moderateScale, verticalScale } from "@utils/scaling";
+import validate from "@utils/validations";
+import React, { useState } from "react";
+import { Platform, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { useDispatch } from "react-redux";
 
 const Signup = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
@@ -26,6 +27,8 @@ const Signup = (): React.JSX.Element => {
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const { styles } = useStyles(stylesheet);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -108,7 +111,7 @@ const Signup = (): React.JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet(() => ({
   container: {
     flex: 1,
     marginHorizontal: moderateScale(16),
@@ -119,6 +122,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: moderateScale(24),
   },
-});
+}));
+
+
 
 export default Signup;

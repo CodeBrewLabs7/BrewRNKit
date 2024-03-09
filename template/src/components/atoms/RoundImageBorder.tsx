@@ -1,42 +1,40 @@
-import Colors from '@constants/colors';
-import { moderateScale } from '@utils/scaling';
-import React from 'react';
-import { ImageProps, Image as RNImage, StyleSheet, View, useColorScheme,ViewProps } from 'react-native';
+import { moderateScale } from "@utils/scaling";
+import React from "react";
+import { ImageProps, Image as RNImage, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 interface CustomImageProps extends ImageProps {
-  imageStyle?: any,
-  viewStyle?: any
+  imageStyle?: any;
+  viewStyle?: any;
 }
-
 // Define the component
-const RoundImageBorder: React.FC<CustomImageProps>= ({imageStyle, viewStyle, ...props}) => {
-  const isDarkMode = useColorScheme() === 'dark';
+const RoundImageBorder: React.FC<CustomImageProps> = ({
+  imageStyle,
+  viewStyle,
+  ...props
+}) => {
+  const { styles,theme } = useStyles(stylesheet);
   return (
-    <View style={{
-      ...styles.container, 
-      backgroundColor: isDarkMode? Colors.dark: Colors.white,
-      ...viewStyle,
-      }}>
+    <View style={[styles.container,viewStyle]}>
       <RNImage
-        tintColor={isDarkMode ? Colors.white : Colors.black}
+        tintColor={theme.colors.darkwhite}
         {...props}
       />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   container: {
     width: moderateScale(50),
     height: moderateScale(50),
     borderRadius: moderateScale(25),
     borderWidth: 0.5,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor:"rgba(90,90,90,0.5)",
+    alignItems: "center",
+    justifyContent: "center",
+    borderColor: "rgba(90,90,90,0.5)",
+    backgroundColor: theme.colors.background,
+  },
+}));
 
-  }
-})
-
-
-export default RoundImageBorder;
+export default React.memo(RoundImageBorder);

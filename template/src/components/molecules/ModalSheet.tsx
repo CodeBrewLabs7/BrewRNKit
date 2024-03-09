@@ -1,11 +1,10 @@
 import { ImageContainer, TextContainer } from "@components/atoms";
-import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { useDispatch, useSelector } from "@redux/hooks";
 import types from "@redux/types";
-import { moderateScale, verticalScale } from "@utils/scaling";
 import { changeLanguage } from "@utils/i18nHelpers";
+import { moderateScale, verticalScale } from "@utils/scaling";
 import { changeTheme } from "@utils/themeHelpers";
 import React, {
   ReactNode,
@@ -13,15 +12,12 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
+import { Modal, ModalProps, Pressable, Switch, View } from "react-native";
 import {
-  Modal,
-  ModalProps,
-  Pressable,
-  StyleSheet,
-  Switch,
-  View,
-  useColorScheme,
-} from "react-native";
+  UnistylesRuntime,
+  createStyleSheet,
+  useStyles,
+} from "react-native-unistyles";
 import { storage } from "src/services/apiService";
 
 interface ModalSheetProps extends ModalProps {
@@ -34,11 +30,11 @@ export interface ModalSheetRef {
 
 const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
   const [isVisible, setVisible] = useState(false);
-
-  const isDarkMode = useColorScheme() === "dark";
   const { languages, defaultLanguage } = useSelector((state) => state.settings);
 
+  const isDarkMode = UnistylesRuntime.themeName === "dark";
   const dispatch = useDispatch();
+  const { styles } = useStyles(stylesheet);
 
   useImperativeHandle(ref, () => ({
     toggleSheet() {
@@ -62,20 +58,10 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
       visible={isVisible}
       {...props}
     >
-      <View
-        style={{
-          ...styles.container,
-          backgroundColor: isDarkMode ? Colors.dark : Colors.light,
-        }}
-      >
+      <View style={styles.container}>
         <View style={styles.headerView}>
           <View />
-          <View
-            style={{
-              ...styles.horizontalLine,
-              backgroundColor: isDarkMode ? Colors.white50 : Colors.gray2,
-            }}
-          />
+          <View style={styles.horizontalLine} />
           <Pressable onPress={() => setVisible(!isVisible)}>
             <ImageContainer source={imagePath.icClose} />
           </Pressable>
@@ -102,18 +88,9 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
                     <TextContainer
                       text={val.name}
                       isDynamicText={true}
-                      style={{
-                        fontFamily:
-                          defaultLanguage.sort_name == val.sort_name
-                            ? fontFamily.semiBold
-                            : fontFamily.regular,
-                        color:
-                          defaultLanguage.sort_name == val.sort_name
-                            ? Colors.danger
-                            : isDarkMode
-                              ? Colors.white
-                              : Colors.black,
-                      }}
+                      style={styles.textStyle(
+                        defaultLanguage.sort_name == val.sort_name
+                      )}
                     />
                   </Pressable>
                 );
@@ -122,9 +99,7 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
 
             <View>
               <TextContainer
-                style={{
-                  fontFamily: fontFamily.semiBold,
-                }}
+                style={{ fontFamily: fontFamily.semiBold }}
                 text="CHANGE_THEME"
               />
               <Switch
@@ -144,10 +119,7 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
             <TextContainer
               onPress={onPressLogout}
               text="LOGOUT"
-              style={{
-                color: Colors.danger,
-                fontFamily: fontFamily.semiBold,
-              }}
+              style={styles.logoutText}
             />
           </Pressable>
         </>
@@ -156,13 +128,13 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
   );
 });
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet((theme) => ({
   container: {
     minHeight: "25%",
     marginTop: "auto",
     borderTopLeftRadius: moderateScale(24),
     borderTopRightRadius: moderateScale(24),
-    shadowColor: "#000",
+    shadowColor: theme.colors.background,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -172,6 +144,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     paddingHorizontal: moderateScale(16),
     paddingVertical: moderateScale(8),
+    backgroundColor: theme.colors.background,
   },
   headerView: {
     flexDirection: "row",
@@ -181,14 +154,22 @@ const styles = StyleSheet.create({
     height: moderateScale(6),
     width: moderateScale(80),
     borderRadius: moderateScale(8),
-    backgroundColor: "grey",
     alignSelf: "center",
+    backgroundColor: theme.colors.opacity50,
   },
   modalView: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: verticalScale(8),
   },
-});
+  textStyle: (isSelected: boolean) => ({
+    fontFamily: isSelected ? fontFamily.semiBold : fontFamily.regular,
+    color: isSelected ? theme.colors.danger : theme.colors.typography,
+  }),
+  logoutText: {
+    color: theme.colors.danger,
+    fontFamily: fontFamily.semiBold,
+  },
+}));
 
 export default ModalSheet;

@@ -35,5 +35,6 @@
   "CHANGE_THEME": "غير الخلفية",
   "CHANGE_LANGUAGE": "تغيير اللغة",
   "LOGOUT": "تسجيل خروج",
-  "SKIP": "يتخطى"
+  "SKIP": "يتخطى",
+  "SOMETHING_WENT_WRONG": "أُووبس...!!! "
 }

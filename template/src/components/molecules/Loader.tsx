@@ -1,10 +1,12 @@
 //import libraries
 import { WrapperContainer } from "@components/atoms";
 import React from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 // create a component
 const Loader = (): React.JSX.Element => {
+  const { styles } = useStyles(stylesheet);
   return (
     <WrapperContainer isSafeAreaView={false}>
       <View style={styles.container}>
@@ -14,13 +16,11 @@ const Loader = (): React.JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
+const stylesheet = createStyleSheet(() => ({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-});
-
-//make this component available to the app
+}));
 export default React.memo(Loader);
