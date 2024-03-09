@@ -2,9 +2,10 @@
 ⚛️ React Native Boilerplate: Jumpstart your app development with essential configurations for React Native projects. Includes libraries, navigation, state management, and styling setup. Streamline your workflow and focus on building amazing mobile experiences! 📱✨
 
 <!-- ![React Native Boilerplate License](https://img.shields.io/github/license/CodeBrewLabs7/BrewRNKit) -->
-![React Native Boilerplate Release Date](https://img.shields.io/github/release-date/CodeBrewLabs7/BrewRNKit)
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
 ![React Native Boilerplate Download](https://flat.badgen.net/npm/dt/brew-react-native-kit)
 ![React Native Boilerplate Top Language](https://img.shields.io/github/languages/top/CodeBrewLabs7/BrewRNKit)
+[![npm version](https://img.shields.io/npm/v/brew-react-native-kit)](https://www.npmjs.com/package/brew-react-native-kit)
 
 ## 📱 Screenshot
 
@@ -17,8 +18,6 @@
   <img src="./documents/images/login-ar.png" alt="My Image" width="160">
   <img src="./documents/images/login_en.png" alt="My Image" width="160">
   </div>
-
-
 
 ### Preview of myapp
 
@@ -35,6 +34,13 @@ https://github.com/CodeBrewLabs7/myapp/assets/56266123/e9a51ea0-f056-4b14-b4ef-f
 - **Main Stack**: Configured main stack for navigation and UI structure.
 - **And Many More**: Additional features and configurations to streamline development.
 
+## Quick Start ⚡
+
+To create a new project using the boilerplate simply run :
+
+```
+npx react-native@latest init MyApp --template brew-react-native-kit
+```
 
 ## Libraries Using BrewRNKit 📚
 
@@ -85,13 +91,6 @@ You also need to install the dependencies required by React Native.
 Go to the [React Native environment setup](https://reactnative.dev/docs/environment-setup), then select `React Native CLI Quickstart` tab.  
 Follow instructions for your given `development OS` and `target OS`.
 
-## Quick start
-
-To create a new project using the boilerplate simply run :
-
-```
-npx react-native@latest init MyApp --template brew-react-native-kit
-```
 
 # Getting Started
 
@@ -141,26 +140,3 @@ pod install
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
