@@ -140,3 +140,6 @@ pod install
 yarn ios
 ```
 
+## Acknowledgements
+
+This package was inspired by [theCodingMachine's React Native Boilerplate](https://github.com/thecodingmachine/react-native-boilerplate). We drew inspiration from their project architecture and design principles, adapting them to suit our specific needs. We are grateful for their contributions to the React Native community.
