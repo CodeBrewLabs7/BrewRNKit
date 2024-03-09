@@ -1,3 +1,4 @@
+import "./styles/unistyles";
 import store from "@redux/store";
 import { checkLocalStorage } from "@utils/handleLocalStorage";
 import React, { useLayoutEffect } from "react";
