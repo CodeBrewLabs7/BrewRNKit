@@ -4,18 +4,14 @@ import HomeHeader from "@components/molecules/HomeHeader";
 import HomeListHeader from "@components/molecules/HomeListHeader";
 import HomeListItems from "@components/molecules/HomeListItems";
 import ModalSheet, { ModalSheetRef } from "@components/molecules/ModalSheet";
-import { HomeStackParamList } from "@navigations/MainStack";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { moderateScale, verticalScale } from "@utils/scaling";
-import React, { useCallback, useMemo, useRef } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  View
-} from "react-native";
 import useCustomQuery from "@hooks/useCustomQuery";
 import { HomeData } from "@models/HomeData";
+import { HomeStackParamList } from "@navigations/MainStack";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { moderateScale } from "@utils/scaling";
+import React, { useCallback, useMemo, useRef } from "react";
+import {ActivityIndicator,FlatList,View} from "react-native";
+import { useStyles } from "react-native-unistyles";
 
 const Home = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<HomeStackParamList>>();
@@ -37,6 +33,8 @@ const Home = (): React.JSX.Element => {
     }
   }, []);
 
+
+ 
   return (
     <WrapperContainer>
       <View style={{ marginHorizontal: moderateScale(20) }}>
@@ -63,11 +61,4 @@ const Home = (): React.JSX.Element => {
   );
 };
 
-const styles = StyleSheet.create({
-  modalView: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: verticalScale(8),
-  },
-});
 export default Home;
