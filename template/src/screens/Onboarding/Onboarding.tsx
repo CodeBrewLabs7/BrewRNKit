@@ -6,7 +6,7 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {Image,ScrollView,StyleSheet,View,useColorScheme} from "react-native";
 import { AuthStackParamList } from "@navigations/AuthStack";
-import { height, moderateScale, scale, verticalScale, width } from "./scaling";
+import { height, moderateScale, scale, verticalScale, width } from "@utils/scaling";
 
 const onBoardData = [{}, {}, {}];
 

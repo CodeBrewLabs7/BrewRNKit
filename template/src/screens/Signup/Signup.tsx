@@ -1,4 +1,4 @@
-//import liraries
+//import libraries
 import { WrapperContainer } from "@components/atoms";
 import CustomButton from "@components/atoms/ButtonContainer";
 import { CustomTextInput } from "@components/molecules";
@@ -6,7 +6,7 @@ import AuthHeader from "@components/molecules/AuthHeader";
 import RememberMe from "@components/molecules/RememberMe";
 import imagePath from "@constants/imagePath";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { moderateScale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, verticalScale } from "@utils/scaling";
 import React, { useState } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";

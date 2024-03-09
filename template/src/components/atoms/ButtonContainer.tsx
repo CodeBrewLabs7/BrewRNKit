@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { TextContainer } from "@components/atoms";
 import Colors from "@constants/colors";
-import { moderateScale } from "@screens/Onboarding/scaling";
+import { moderateScale } from "@utils/scaling";
 
 interface CustomButtonProps extends TouchableOpacityProps {
   label: string;

@@ -8,7 +8,7 @@ import HeaderComp from "@components/molecules/HeaderComp";
 import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import { moderateScale, scale, width } from "@screens/Onboarding/scaling";
+import { moderateScale, scale, width } from "@utils/scaling";
 import React from "react";
 import {
   ImageBackground,

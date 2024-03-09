@@ -1,7 +1,7 @@
 import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import { moderateScale, scale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { PropsWithChildren } from "react";
 import { StyleSheet, View } from "react-native";
 

@@ -5,7 +5,7 @@ import {
   moderateScale,
   scale,
   verticalScale,
-} from "@screens/Onboarding/scaling";
+} from "@utils/scaling";
 import React, { PropsWithChildren } from "react";
 import {
   Image,

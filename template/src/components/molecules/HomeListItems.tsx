@@ -8,7 +8,7 @@ import {
   moderateScale,
   scale,
   verticalScale,
-} from "@screens/Onboarding/scaling";
+} from "@utils/scaling";
 import React, { memo } from "react";
 import { Pressable, StyleSheet, View, useColorScheme } from "react-native";
 import { ProductsData } from "@models/HomeData";

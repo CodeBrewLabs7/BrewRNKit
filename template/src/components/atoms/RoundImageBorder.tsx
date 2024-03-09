@@ -1,5 +1,5 @@
 import Colors from '@constants/colors';
-import { moderateScale } from '@screens/Onboarding/scaling';
+import { moderateScale } from '@utils/scaling';
 import React from 'react';
 import { ImageProps, Image as RNImage, StyleSheet, View, useColorScheme,ViewProps } from 'react-native';
 

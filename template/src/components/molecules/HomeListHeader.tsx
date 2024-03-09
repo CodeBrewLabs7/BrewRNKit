@@ -1,7 +1,7 @@
 import { TextContainer } from "@components/atoms";
 import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
-import { moderateScale, scale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { memo } from "react";
 import { StyleSheet, View, useColorScheme } from "react-native";
 import SearchBar from "./SearchBar";

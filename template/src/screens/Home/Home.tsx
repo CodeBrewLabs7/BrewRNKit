@@ -6,7 +6,7 @@ import HomeListItems from "@components/molecules/HomeListItems";
 import ModalSheet, { ModalSheetRef } from "@components/molecules/ModalSheet";
 import { HomeStackParamList } from "@navigations/MainStack";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { moderateScale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, verticalScale } from "@utils/scaling";
 import React, { useCallback, useMemo, useRef } from "react";
 import {
   ActivityIndicator,

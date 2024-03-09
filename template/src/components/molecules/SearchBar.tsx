@@ -2,7 +2,7 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import Colors from "@constants/colors";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import { moderateScale, scale } from "@screens/Onboarding/scaling";
+import { moderateScale, scale } from "@utils/scaling";
 import React, { PropsWithChildren } from "react";
 import { StyleSheet, View } from "react-native";
 

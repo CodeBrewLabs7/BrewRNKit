@@ -1,7 +1,7 @@
 import RoundImageBorder from "@components/atoms/RoundImageBorder";
 import imagePath from "@constants/imagePath";
 import { useNavigation } from "@react-navigation/native";
-import { moderateScale } from "@screens/Onboarding/scaling";
+import { moderateScale } from "@utils/scaling";
 import React, { PropsWithChildren } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 

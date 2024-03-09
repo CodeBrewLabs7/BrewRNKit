@@ -1,5 +1,5 @@
 import fontFamily from "@constants/fontFamily";
-import { scale } from "@screens/Onboarding/scaling";
+import { scale } from "@utils/scaling";
 import i18n from 'i18next';
 import React from 'react';
 import { useTranslation } from "react-i18next";

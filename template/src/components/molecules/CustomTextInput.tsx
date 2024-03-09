@@ -1,6 +1,6 @@
 import { TextContainer } from '@components/atoms';
 import fontFamily from '@constants/fontFamily';
-import { moderateScale, scale } from '@screens/Onboarding/scaling';
+import { moderateScale, scale } from '@utils/scaling';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, TextInput, TextInputProps, View, useColorScheme } from 'react-native';

@@ -9,7 +9,7 @@ import { AuthStackParamList } from "@navigations/AuthStack";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { login } from "@redux/actions/auth";
 import { useDispatch, useSelector } from "@redux/hooks";
-import { moderateScale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
 import React, { useState } from "react";
 import {

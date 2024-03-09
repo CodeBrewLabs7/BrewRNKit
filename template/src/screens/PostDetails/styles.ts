@@ -1,7 +1,7 @@
 
 import Colors from '@constants/colors';
 import fontFamily from '@constants/fontFamily';
-import { height, moderateScale, scale, verticalScale, width } from '@screens/Onboarding/scaling';
+import { height, moderateScale, scale, verticalScale, width } from '@utils/scaling';
 import { StyleSheet } from 'react-native';
 
 const styleFun = (isDarkMode: boolean) =>{

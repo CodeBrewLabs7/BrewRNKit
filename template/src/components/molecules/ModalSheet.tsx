@@ -4,7 +4,7 @@ import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { useDispatch, useSelector } from "@redux/hooks";
 import types from "@redux/types";
-import { moderateScale, verticalScale } from "@screens/Onboarding/scaling";
+import { moderateScale, verticalScale } from "@utils/scaling";
 import { changeLanguage } from "@utils/i18nHelpers";
 import { changeTheme } from "@utils/themeHelpers";
 import React, {
