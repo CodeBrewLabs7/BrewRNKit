@@ -22,9 +22,7 @@ const Home = (): React.JSX.Element => {
     isError,
   } = useCustomQuery<HomeData | any>("/products", "?limit=150");
 
-  const memoizedPosts = useMemo(() => {
-    return posts;
-  }, [posts]);
+  const memoizedPosts = useMemo(() => posts, [posts]);
 
   const handleToggleSheet = useCallback(() => {
     if (modalSheetRef.current) {

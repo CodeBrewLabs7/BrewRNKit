@@ -10,21 +10,20 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   // Add the Authorization header if a token is present
   const userData = getItem("userData");
-  if (!!userData) {
+  if (userData) {
     config.headers.Authorization = `Bearer ${userData.token}`;
   }
   return config;
 });
 
-function useCustomQuery<T>(url: APIS, query = "") {
-  return useQuery<T>({
-    queryKey: [url+query],
+const useCustomQuery = <T>(url: APIS, query = "") =>
+  useQuery<T>({
+    queryKey: [url + query],
     queryFn: async () => {
       const response = await axiosInstance.get<T>(url + query);
       return response.data;
     },
     retry: 3,
   });
-}
 
 export default useCustomQuery;

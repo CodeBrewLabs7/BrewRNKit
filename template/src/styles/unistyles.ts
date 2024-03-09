@@ -17,7 +17,7 @@ UnistylesRegistry
   .addBreakpoints(breakpoints)
   .addThemes({
     light: lightTheme,
-    dark: darkTheme,
+    dark: darkTheme
   })
   .addConfig({
     adaptiveThemes: true

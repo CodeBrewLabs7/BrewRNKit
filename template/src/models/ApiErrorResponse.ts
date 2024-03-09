@@ -1,5 +1,4 @@
-import { AxiosError,AxiosResponse } from "axios"
-
+import { AxiosError } from "axios"
 
 type ResponseStatus = {
   data: {

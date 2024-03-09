@@ -3,8 +3,9 @@ import fontFamily from "@constants/fontFamily";
 import { moderateScale, scale } from "@utils/scaling";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Pressable, TextInput, TextInputProps, View } from "react-native";
-import {createStyleSheet,useStyles} from "react-native-unistyles";
+import { Pressable, TextInput, View } from "react-native";
+import type { TextInputProps } from "react-native";
+import { createStyleSheet,useStyles } from "react-native-unistyles";
 import ImageContainer from "../atoms/ImageContainer";
 
 interface CustomTextInputProps extends TextInputProps {

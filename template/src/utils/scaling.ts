@@ -4,7 +4,7 @@ const width = UnistylesRuntime.screen.width;
 const height = UnistylesRuntime.screen.height;
 export { height, width };
 
-//Guideline sizes are based on standard ~5" screen mobile device
+// Guideline sizes are based on standard ~5" screen mobile device
 const guidelineBaseWidth = 350;
 const guidelineBaseHeight = 680;
 

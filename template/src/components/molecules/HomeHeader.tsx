@@ -2,7 +2,8 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
-import React, { PropsWithChildren } from "react";
+import React from "react";
+import type { PropsWithChildren } from "react";
 import { Image, Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -12,29 +13,32 @@ type SectionProps = PropsWithChildren<{
   onPress?: () => void;
 }>;
 
-function HeaderComp(props: SectionProps): React.JSX.Element {
+const HeaderComp = (props: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   return (
-    <>
-      <View style={{ ...styles.headerStyle, ...props.style }}>
-        <Image
-          source={{
-            uri: "https://m.media-amazon.com/images/I/31Cd9UQp6eL._AC_UF1000,1000_QL80_.jpg",
-          }}
-          style={styles.profileImage}
-        />
-        <TextContainer style={styles.titleStyle} text={`${props.title}`} />
-
-        <Pressable onPress={props.onPress}>
-          <ImageContainer source={imagePath.icSetting} />
-        </Pressable>
-      </View>
-    </>
+    <View key="header" style={{ ...styles.headerStyle, ...props.style }}>
+      <Image
+        key="profileImage"
+        source={{
+          uri: "https://m.media-amazon.com/images/I/31Cd9UQp6eL._AC_UF1000,1000_QL80_.jpg",
+        }}
+        style={styles.profileImage}
+      />
+      <TextContainer
+        key="title"
+        style={styles.titleStyle}
+        text={`${props.title}`}
+      />
+      <Pressable key="setting" onPress={props.onPress}>
+        <ImageContainer source={imagePath.icSetting} />
+      </Pressable>
+    </View>
   );
-}
+};
+
 export default React.memo(HeaderComp);
 
-const stylesheet = createStyleSheet((theme) => ({
+const stylesheet = createStyleSheet(() => ({
   headerStyle: {
     flexDirection: "row",
     alignItems: "center",

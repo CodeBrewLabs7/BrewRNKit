@@ -37,7 +37,7 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
   const { styles } = useStyles(stylesheet);
 
   useImperativeHandle(ref, () => ({
-    toggleSheet() {
+    toggleSheet: () => {
       setVisible(!isVisible);
     },
   }));
@@ -45,19 +45,14 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
   const onPressLogout = () => {
     setVisible(!isVisible);
     setTimeout(() => {
-      //need time to close modal
+      // need time to close modal
       storage.clearAll();
       dispatch({ type: types.CLEAR_REDUX_STATE });
     }, 800);
   };
 
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={isVisible}
-      {...props}
-    >
+    <Modal animationType="slide" transparent visible={isVisible} {...props}>
       <View style={styles.container}>
         <View style={styles.headerView}>
           <View />
@@ -76,25 +71,23 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
                 text="CHANGE_LANGUAGE"
               />
 
-              {languages.map((val, i) => {
-                return (
-                  <Pressable
-                    style={{
-                      marginTop: verticalScale(8),
-                    }}
-                    key={String(i)}
-                    onPress={() => changeLanguage(val)}
-                  >
-                    <TextContainer
-                      text={val.name}
-                      isDynamicText={true}
-                      style={styles.textStyle(
-                        defaultLanguage.sort_name == val.sort_name
-                      )}
-                    />
-                  </Pressable>
-                );
-              })}
+              {languages.map((val, i) => (
+                <Pressable
+                  style={{
+                    marginTop: verticalScale(8),
+                  }}
+                  key={String(i)}
+                  onPress={() => changeLanguage(val)}
+                >
+                  <TextContainer
+                    text={val.name}
+                    isDynamicText
+                    style={styles.textStyle(
+                      defaultLanguage.sortName === val.sortName
+                    )}
+                  />
+                </Pressable>
+              ))}
             </View>
 
             <View>

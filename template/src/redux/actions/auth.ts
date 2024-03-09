@@ -1,13 +1,15 @@
-import { AsyncThunk, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import type { AsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Platform } from "react-native";
-import { User } from "@models/User";
+import type { User } from "@models/User";
 import { post } from "src/services/apiService";
 
 const LOGIN_ACTION_PREFIX = "/auth/login";
 const SIGNUP_ACTION_PREFIX = "/auth/login";
 
 // Create an object to hold the last request's cancellation token
+// eslint-disable-next-line
 let lastLoginRequest: { cancel: () => void } | null = null;
 
 interface LoginState {
@@ -30,7 +32,7 @@ export const login: AsyncThunk<User, LoginState, {}> = createAsyncThunk(
       const source = axios.CancelToken.source();
       lastLoginRequest = source;
     try {
-      const response = await post("/auth/login", data, {cancelToken: source.token});
+      const response = await post("/auth/login", data, { cancelToken: source.token });
       console.log("/auth/login api res", response);
       return response as User;
     } catch (error) {
@@ -69,13 +71,10 @@ export const signup: AsyncThunk<User, SignupState, {}> = createAsyncThunk(
   }
 );
 
-export function setFirstTime() {
-  // dispatch(changeFirstTime(true));
+export const setFirstTime = () =>{
+
 }
 
-export function forgotPassword(data: object) {
-  
+export const forgotPassword = () => {
+
 }
-
-
-

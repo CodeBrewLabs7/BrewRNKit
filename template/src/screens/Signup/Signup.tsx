@@ -1,15 +1,14 @@
-//import libraries
 import { WrapperContainer } from "@components/atoms";
 import CustomButton from "@components/atoms/ButtonContainer";
 import { CustomTextInput } from "@components/molecules";
 import AuthHeader from "@components/molecules/AuthHeader";
 import RememberMe from "@components/molecules/RememberMe";
 import imagePath from "@constants/imagePath";
-import { AuthStackParamList } from "@navigations/AuthStack";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import type { AuthStackParamList } from "@navigations/AuthStack";
+import type { NavigationProp, useNavigation } from "@react-navigation/native";
 import { signup } from "@redux/actions/auth";
 import { useSelector } from "@redux/hooks";
-import { AppDispatch } from "@redux/store";
+import type { AppDispatch } from "@redux/store";
 import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
 import React, { useState } from "react";
@@ -20,7 +19,7 @@ import { useDispatch } from "react-redux";
 
 const Signup = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
-  const { isLoading } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector(state => state.auth);
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -33,29 +32,24 @@ const Signup = (): React.JSX.Element => {
   const dispatch: AppDispatch = useDispatch();
 
   const onSignup = async () => {
-    let isValid = validate({
+    const isValid = validate({
       name,
       email,
-      password,
+      password
     });
 
-    if (isValid == true) {
-      let res = await dispatch(
+    if (isValid === true) {
+      const res = await dispatch(
         signup({ name, email, username, password, deviceType: Platform.OS })
       );
       console.log("res+++", res);
-      if (res.meta.requestStatus == "fulfilled") {
-        //@ts-expect-error
-        alert("User created successfully...!!");
-        navigation.goBack()
-      } else {
-               //@ts-expect-error
-        alert(res.payload.response.data.error);
-      }
-    } else {
-      //@ts-expect-error
-      alert(isValid);
+     
+     // @ts-expect-error
+      res.meta.requestStatus === "fulfilled" ? navigation.goBack() :  alert(res.payload.response.data.error);
+    return;
     }
+    // @ts-expect-error
+    alert(isValid);
   };
 
   return (
@@ -97,7 +91,7 @@ const Signup = (): React.JSX.Element => {
             onPressRight={() => setSecureTextEntry(!secureTextEntry)}
           />
           <RememberMe
-            //@ts-ignore
+            // @ts-ignore
             onPressForgot={() => alert("Forgot password")}
           />
           <CustomButton
@@ -114,16 +108,14 @@ const Signup = (): React.JSX.Element => {
 const stylesheet = createStyleSheet(() => ({
   container: {
     flex: 1,
-    marginHorizontal: moderateScale(16),
+    marginHorizontal: moderateScale(16)
   },
   flexRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: moderateScale(24),
-  },
+    marginBottom: moderateScale(24)
+  }
 }));
-
-
 
 export default Signup;

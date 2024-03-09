@@ -1,6 +1,6 @@
 import 'intl-pluralrules';
 import i18n from 'i18next';
-import {initReactI18next} from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import RNLanguageDetector from '@os-team/i18next-react-native-language-detector';
 
 import enTranslation from './en.json';
@@ -16,13 +16,13 @@ i18n
     supportedLngs: ['en', 'fr', 'ar'],
     resources: {
       en: {
-        translation: enTranslation,
+        translation: enTranslation
       },
       fr: {
-        translation: frTranslation,
+        translation: frTranslation
       },
       ar: {
-        translation: arTranslation,
-      },
-    },
+        translation: arTranslation
+      }
+    }
   });

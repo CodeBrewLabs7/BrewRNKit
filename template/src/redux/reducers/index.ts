@@ -12,9 +12,8 @@ const appReducer = combineReducers({
     settings
 });
 const rootReducer = (state:  RootState | undefined, action: Action<any>) => {
-
   
-    if (action.type == types.CLEAR_REDUX_STATE) {
+    if (action.type === types.CLEAR_REDUX_STATE) {
         state = undefined;
     }
     return appReducer(state, action)

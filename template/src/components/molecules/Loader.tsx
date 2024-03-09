@@ -1,4 +1,3 @@
-//import libraries
 import { WrapperContainer } from "@components/atoms";
 import React from "react";
 import { ActivityIndicator, View } from "react-native";

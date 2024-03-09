@@ -1,8 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface LanguageInterface {
   name: string;
-  sort_name: string;
+  sortName: string;
 }
 
 export interface ThemeInterface {
@@ -10,21 +11,21 @@ export interface ThemeInterface {
 }
 
 export interface SettingsState {
-  languages: LanguageInterface[];
+  languages: Array<LanguageInterface> ;
   defaultLanguage: LanguageInterface;
   defaultTheme: ThemeInterface;
 }
 
-const supportedLanguages: LanguageInterface[] = [
-  { name: "English", sort_name: "en" },
-  { name: "Arabic", sort_name: "ar" },
-  { name: "French", sort_name: "fr" },
+const supportedLanguages: Array<LanguageInterface> = [
+  { name: "English", sortName: "en" },
+  { name: "Arabic", sortName: "ar" },
+  { name: "French", sortName: "fr" },
 ];
 
 const initialState: SettingsState = {
   languages: supportedLanguages,
   defaultLanguage: supportedLanguages[0],
-  defaultTheme: {myTheme:"light"},
+  defaultTheme: { myTheme:"light" },
 };
 
 const settingSlice = createSlice({
@@ -33,7 +34,7 @@ const settingSlice = createSlice({
   reducers: {
     saveDefaultLanguage: (state, action: PayloadAction<LanguageInterface>) => {
       const languageExists = state.languages.some(
-        (lang) => lang.sort_name === action.payload.sort_name
+        (lang) => lang.sortName === action.payload.sortName
       );
       if (languageExists) {
         state.defaultLanguage = action.payload;

@@ -1,5 +1,3 @@
-
-
 export type  ProductsData = {
     id:number,
     title:string,
@@ -15,6 +13,6 @@ export type  ProductsData = {
   }
 
    export interface HomeData {
-    products: HomeData[]
+    products: Array<HomeData>
    }
   

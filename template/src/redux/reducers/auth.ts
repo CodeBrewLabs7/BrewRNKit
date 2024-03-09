@@ -35,7 +35,7 @@ const authSlice = createSlice({
       state.isFirstTime = action.payload;
     },
   },
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
     });

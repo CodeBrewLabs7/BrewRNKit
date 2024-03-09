@@ -5,8 +5,9 @@ import AuthHeader from "@components/molecules/AuthHeader";
 import RememberMe from "@components/molecules/RememberMe";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import { AuthStackParamList } from "@navigations/AuthStack";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import type { AuthStackParamList } from "@navigations/AuthStack";
+import type { NavigationProp } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { login } from "@redux/actions/auth";
 import { useDispatch, useSelector } from "@redux/hooks";
 import { moderateScale, verticalScale } from "@utils/scaling";
@@ -16,7 +17,7 @@ import {
   Keyboard,
   Platform,
   TouchableWithoutFeedback,
-  View
+  View,
 } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -32,20 +33,17 @@ const Login = (): React.JSX.Element => {
   const dispatch = useDispatch();
 
   const onLogin = async () => {
-    let isValid = validate({
+    const isValid = validate({
       name: username,
       password,
     });
 
-    if (isValid == true) {
-      let res = await dispatch(login({ username, password, deviceType: Platform.OS }))
-      if (res.meta.requestStatus == "rejected") {
-        //@ts-ignore
-        alert(res.payload.error);
-      }
-    } else {
-      //@ts-ignore
-      alert(isValid);
+    if (isValid === true) {
+      const res = await dispatch(
+        login({ username, password, deviceType: Platform.OS })
+      );
+      // @ts-ignore
+      res.meta.requestStatus === "rejected" ? alert(res.payload.error) : alert(isValid);
     }
   };
 
@@ -67,7 +65,7 @@ const Login = (): React.JSX.Element => {
               onChangeText={setUsername}
             />
             <CustomTextInput
-            value={password}
+              value={password}
               leftImage={imagePath.icLock}
               label="PASSWORD"
               placeholder="ENTER_YOUR_PASSWORD"
@@ -101,6 +99,7 @@ const Login = (): React.JSX.Element => {
   );
 };
 
+export default Login;
 
 const stylesheet = createStyleSheet(() => ({
   container: {
@@ -114,7 +113,3 @@ const stylesheet = createStyleSheet(() => ({
     alignSelf: "center",
   },
 }));
-
-
-
-export default Login;

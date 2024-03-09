@@ -2,7 +2,7 @@ import {
   ButtonContainer,
   ImageContainer,
   TextContainer,
-  WrapperContainer,
+  WrapperContainer
 } from "@components/atoms";
 import HeaderComp from "@components/molecules/HeaderComp";
 import fontFamily from "@constants/fontFamily";
@@ -21,15 +21,19 @@ const PostDetails = ({ route }: any): React.JSX.Element => {
   const {
     data: posts,
     isLoading,
-    isError,
+    isError
   } = useCustomQuery<ProductsData>("/products", `/${route.params.productId}`);
 
   const { styles } = useStyles(stylesheet);
   const { theme } = useStyles();
   const isDarkMode = UnistylesRuntime.themeName === "dark";
 
-  if (isLoading) return <Loader />;
-  if (isError) return <ErrorComp />;
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (isError) {
+    return <ErrorComp />;
+  }
 
   return (
     <WrapperContainer isSafeAreaView={false}>

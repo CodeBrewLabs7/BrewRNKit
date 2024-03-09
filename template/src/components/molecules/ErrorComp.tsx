@@ -1,4 +1,3 @@
-//import libraries
 import { TextContainer, WrapperContainer } from "@components/atoms";
 import React from "react";
 import { View } from "react-native";
@@ -24,5 +23,5 @@ const stylesheet = createStyleSheet(() => ({
   },
 }));
 
-//make this component available to the app
+// make this component available to the app
 export default React.memo(ErrorComp);

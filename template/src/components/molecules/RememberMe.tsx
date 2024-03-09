@@ -2,7 +2,8 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
-import React, { PropsWithChildren, useState } from "react";
+import React, { useState } from "react";
+import type { PropsWithChildren } from "react";
 import { Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -10,7 +11,7 @@ type SectionProps = PropsWithChildren<{
   onPressForgot: () => void;
 }>;
 
-function RememberMe(props: SectionProps): React.JSX.Element {
+const  RememberMe = (props: SectionProps): React.JSX.Element => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const { styles } = useStyles(stylesheet);
   return (

@@ -2,7 +2,8 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
-import React, { PropsWithChildren } from "react";
+import React from "react";
+import type { PropsWithChildren } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -12,7 +13,7 @@ type SectionProps = PropsWithChildren<{
   style?: object;
 }>;
 
-function AuthHeader(props: SectionProps): React.JSX.Element {
+const AuthHeader = (props: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   return (
     <>
@@ -28,7 +29,7 @@ function AuthHeader(props: SectionProps): React.JSX.Element {
       <TextContainer style={styles.descStyle} text={props.description} />
     </>
   );
-}
+};
 export default React.memo(AuthHeader);
 
 const stylesheet = createStyleSheet(() => ({

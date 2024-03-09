@@ -2,7 +2,8 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale } from "@utils/scaling";
-import React, { PropsWithChildren } from "react";
+import React from "react";
+import type { PropsWithChildren } from "react";
 import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -12,11 +13,11 @@ type SectionProps = PropsWithChildren<{
   textStyle?: object;
 }>;
 
-function SearchBar({
+const SearchBar = ({
   title,
   style,
   textStyle,
-}: SectionProps): React.JSX.Element {
+}: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
 
   return (
@@ -25,7 +26,8 @@ function SearchBar({
       <TextContainer style={[styles.titleStyle, textStyle]} text={title} />
     </View>
   );
-}
+};
+
 export default React.memo(SearchBar);
 
 const stylesheet = createStyleSheet((theme) => ({

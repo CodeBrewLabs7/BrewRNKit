@@ -1,8 +1,8 @@
-//import libraries
 import { TextContainer, WrapperContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
-import { AuthStackParamList } from "@navigations/AuthStack";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import type { AuthStackParamList } from "@navigations/AuthStack";
+import type { NavigationProp } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import {
   height,
   moderateScale,
@@ -11,7 +11,7 @@ import {
   width,
 } from "@utils/scaling";
 import React, { useRef, useState } from "react";
-import { Image, ScrollView, View, useColorScheme } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import {
   UnistylesRuntime,
   createStyleSheet,
@@ -41,58 +41,53 @@ const Onboarding = (): React.JSX.Element => {
         <ScrollView
           horizontal
           pagingEnabled
-          disableIntervalMomentum={true}
           showsHorizontalScrollIndicator={false}
           onMomentumScrollEnd={handleScroll}
           ref={scrollRef}
         >
-          {onBoardData.map((val, i) => {
-            return (
-              <View
-                style={{
-                  width: width,
-                  paddingHorizontal: moderateScale(16),
+          {onBoardData.map((val, i) => (
+            <View
+              style={{
+                width,
+                paddingHorizontal: moderateScale(16),
+              }}
+              key={String(i)}
+            >
+              <Image
+                source={{
+                  uri: "https://img.freepik.com/free-vector/onboarding-concept-illustration_114360-1085.jpg",
                 }}
-                key={String(i)}
-              >
-                <Image
-                  source={{
-                    uri: "https://img.freepik.com/free-vector/onboarding-concept-illustration_114360-1085.jpg",
-                  }}
-                  resizeMode="contain"
-                  style={{
-                    height: height / 2.1,
-                    width: "100%",
-                  }}
-                />
-                <TextContainer
-                  isDynamicText
-                  text="Connect people around the world"
-                  style={{
-                    fontSize: scale(32),
-                    marginVertical: verticalScale(16),
-                    lineHeight: scale(42),
-                  }}
-                />
-                <TextContainer
-                  isDynamicText
-                  text="Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
-                  style={{
-                    fontSize: scale(14),
-                    fontFamily: fontFamily.regular,
-                  }}
-                />
-              </View>
-            );
-          })}
+                resizeMode="contain"
+                style={{
+                  height: height / 2.1,
+                  width: "100%",
+                }}
+              />
+              <TextContainer
+                isDynamicText
+                text="Connect people around the world"
+                style={{
+                  fontSize: scale(32),
+                  marginVertical: verticalScale(16),
+                  lineHeight: scale(42),
+                }}
+              />
+              <TextContainer
+                isDynamicText
+                text="Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
+                style={{
+                  fontSize: scale(14),
+                  fontFamily: fontFamily.regular,
+                }}
+              />
+            </View>
+          ))}
         </ScrollView>
         <View style={styles.flexView}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            {onBoardData.map((val, i) => {
-              return (
-                <View key={String(i)} style={styles.dotStyle(i === index)} />
-              );
-            })}
+            {onBoardData.map((val, i) => (
+              <View key={String(i)} style={styles.dotStyle(i === index)} />
+            ))}
           </View>
           <View>
             <TextContainer

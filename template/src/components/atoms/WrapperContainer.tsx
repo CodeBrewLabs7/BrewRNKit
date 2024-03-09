@@ -1,4 +1,5 @@
-import React,{PropsWithChildren} from "react";
+import React from "react";
+import type { PropsWithChildren } from "react";
 import { SafeAreaView, StatusBar, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
@@ -22,14 +23,13 @@ const WrapperContainer = ({
         {children}
       </SafeAreaView>
     );
-  } else {
+  }
     return (
       <View style={[styles.container, style]}>
         <StatusBar barStyle={theme.colors.barStyle} />
         {children}
       </View>
-    );
-  }
+    )
 };
 
 export default React.memo(WrapperContainer);
