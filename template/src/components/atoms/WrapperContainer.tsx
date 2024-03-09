@@ -1,51 +1,46 @@
-//import liraries
-import Colors from '@constants/colors';
-import type { PropsWithChildren } from 'react';
-import React from 'react';
-import { SafeAreaView, StatusBar, View, useColorScheme } from 'react-native';
+import type { PropsWithChildren } from "react";
+import React from "react";
+import { SafeAreaView, StatusBar, View } from "react-native";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 type SectionProps = PropsWithChildren<{
-    style?: object,
-    isSafeAreaView?: boolean
+  style?: object;
+  isSafeAreaView?: boolean;
 }>;
 
 const WrapperContainer = ({
-    children,
-    style = {},
-    isSafeAreaView = true
+  children,
+  style = {},
+  isSafeAreaView = true,
 }: SectionProps): React.JSX.Element => {
-    const isDarkMode = useColorScheme() === 'dark';
-    if (isSafeAreaView) {
-        return (
-            <SafeAreaView
-                style={{
-                    flex: 1,
-                    backgroundColor: isDarkMode ? Colors.dark : Colors.light,
-                    ...style
-                }}
-            >
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                />
-                {children}
-            </SafeAreaView>
-        );
-    } else {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    backgroundColor: isDarkMode ? Colors.dark : Colors.light,
-                    ...style
-                }}
-            >
-                <StatusBar
-                    barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                />
-                {children}
-            </View>
-        )
-    }
+  const { styles } = useStyles(stylesheet);
+  const { theme } = useStyles();
+
+  if (isSafeAreaView) {
+    return (
+      <SafeAreaView style={[styles.container, style]}>
+        <StatusBar barStyle={theme.colors.barStyle} />
+        {children}
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <View style={[styles.container, style]}>
+        <StatusBar barStyle={theme.colors.barStyle} />
+        {children}
+      </View>
+    );
+  }
 };
 
 export default React.memo(WrapperContainer);
+
+const stylesheet = createStyleSheet((theme) => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+  text: {
+    color: theme.colors.typography,
+  },
+}));
