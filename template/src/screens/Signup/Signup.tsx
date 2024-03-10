@@ -97,9 +97,31 @@ function Signup(): React.JSX.Element {
         <View style={styles.container}>
           <AuthHeader title="CREATE_AN_ACCOUNT" description="WELCOME_PLEASE_ENTER_YOUR_DETAILS" />
 
-          <CustomTextInput leftImage={imagePath.icUser} label="NAME" placeholder="ENTER_YOUR_NAME" style={{ marginBottom: verticalScale(24) }} onChangeText={setName} />
-          <CustomTextInput leftImage={imagePath.icEmail} label="EMAIL" placeholder="ENTER_YOUR_EMAIL" style={{ marginBottom: verticalScale(24) }} keyboardType="email-address" onChangeText={setEmail} />
-          <CustomTextInput leftImage={imagePath.icLock} rightImage={secureTextEntry ? imagePath.icPassword : imagePath.icPasswordShow} label="PASSWORD" placeholder="ENTER_YOUR_PASSWORD" style={{ marginBottom: verticalScale(24) }} onChangeText={setPassword} secureTextEntry={secureTextEntry} onPressRight={() => setSecureTextEntry(!secureTextEntry)} />
+          <CustomTextInput
+            leftImage={imagePath.icUser}
+            label="NAME"
+            placeholder="ENTER_YOUR_NAME"
+            style={{ marginBottom: verticalScale(24) }}
+            onChangeText={setName}
+          />
+          <CustomTextInput
+            leftImage={imagePath.icEmail}
+            label="EMAIL"
+            placeholder="ENTER_YOUR_EMAIL"
+            style={{ marginBottom: verticalScale(24) }}
+            keyboardType="email-address"
+            onChangeText={setEmail}
+          />
+          <CustomTextInput
+            leftImage={imagePath.icLock}
+            rightImage={secureTextEntry ? imagePath.icPassword : imagePath.icPasswordShow}
+            label="PASSWORD"
+            placeholder="ENTER_YOUR_PASSWORD"
+            style={{ marginBottom: verticalScale(24) }}
+            onChangeText={setPassword}
+            secureTextEntry={secureTextEntry}
+            onPressRight={() => setSecureTextEntry(!secureTextEntry)}
+          />
           <RememberMe onPressForgot={() => alertFunction("Password", "Forgot Password")} />
           <CustomButton isLoading={isLoading} label="SIGNUP" onPress={onSignup} />
         </View>

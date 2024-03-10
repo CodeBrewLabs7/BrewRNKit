@@ -2,42 +2,19 @@
   "extends": ["@react-native/typescript-config/tsconfig.json"],
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "." ,
+    "baseUrl": ".",
     "paths": {
-       "@api/*": [
-         "src/api/*"
-       ],
-       "@assets/*": [
-         "src/assets/*"
-       ],
-       "@components/*": [
-         "src/components/*"
-       ],
-       "@screens/*": [
-         "src/screens/*"
-       ],
-    
-       "@utils/*": [
-         "src/utils/*"
-       ],
-       "@constants/*": [
-        "src/constants/*"
-      ],
-       "@typings/*": [
-        "src/typings/*"
-      ],
-      "@redux/*": [
-        "src/redux/*"
-      ],
-      "@navigations/*": [
-        "src/navigations/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@models/*": [
-        "src/models/*"
-      ],
-    },
- }
+      "@api/*": ["src/api/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@screens/*": ["src/screens/*"],
+      "@utils/*": ["src/utils/*"],
+      "@constants/*": ["src/constants/*"],
+      "@typings/*": ["src/typings/*"],
+      "@redux/*": ["src/redux/*"],
+      "@navigations/*": ["src/navigations/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@models/*": ["src/models/*"]
+    }
+  }
 }
