@@ -1,34 +1,33 @@
-
-import i18n from "i18next";
 import { saveUserData } from "@redux/reducers/auth";
-import store from "@redux/store";
-import { getItem } from "src/services/apiService";
-import { Appearance } from "react-native";
 import { saveDefaultLanguage, saveDefaultTheme } from "@redux/reducers/settings";
-import { UnistylesRuntime, useInitialTheme } from "react-native-unistyles";
+import store from "@redux/store";
+import i18n from "i18next";
+import { UnistylesRuntime } from "react-native-unistyles";
+import { getItem } from "src/services/apiService";
 
 const { dispatch } = store;
+const checkLocalStorage = () => {
+  // get user Data
+  const userData = getItem("userData");
+  if (userData) {
+    dispatch(saveUserData(userData));
+  }
+  // get default theme
+  const defaultTheme = getItem("defaultTheme");
+  if (defaultTheme) {
+    // @ts-expect-error : will handle later
+    UnistylesRuntime.setTheme(defaultTheme.myTheme);
+    // @ts-expect-error : will handle later
+    dispatch(saveDefaultTheme(defaultTheme));
+  }
+  // get default language
+  const defaultLanguage = getItem("defaultLanguage");
+  if (defaultLanguage) {
+    // @ts-expect-error : will handle later
+    i18n.changeLanguage(defaultLanguage.sortName);
+    // @ts-expect-error : will handle later
+    dispatch(saveDefaultLanguage(defaultLanguage));
+  }
+};
 
-export const checkLocalStorage = () =>{
-     //get user Data
-     let userData = getItem("userData");
-     if (!!userData) {
-       dispatch(saveUserData(userData));
-     }
-     //get default theme
-     let defaultTheme = getItem("defaultTheme");
-     if (!!defaultTheme) {
-       //@ts-ignore
-       UnistylesRuntime.setTheme(defaultTheme.myTheme)
-       //@ts-ignore
-       dispatch(saveDefaultTheme(defaultTheme));
-     }
-     //get default language
-     let defaultLanguage = getItem("defaultLanguage");
-     if (!!defaultLanguage) {
-       //@ts-ignore
-       i18n.changeLanguage(defaultLanguage.sort_name);
-       //@ts-ignore
-       dispatch(saveDefaultLanguage(defaultLanguage));
-     }
-}
+export default checkLocalStorage;

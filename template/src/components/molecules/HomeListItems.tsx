@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import { TextContainer } from "@components/atoms";
 import RemoteImage from "@components/atoms/RemoteImage";
 import fontFamily from "@constants/fontFamily";
@@ -8,69 +10,6 @@ import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React, { memo } from "react";
 import { Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-interface HomeListItemsProps {
-  item: ProductsData;
-  navigation: NavigationProp<HomeStackParamList>;
-}
-
-const HomeListItems: React.FC<HomeListItemsProps> = memo(
-  ({ item, navigation }) => {
-    const { styles } = useStyles(stylesheet);
-    return (
-      <Pressable
-        style={styles.container}
-        onPress={() =>
-          navigation.navigate("PostDetails", { productId: item.id })
-        }
-      >
-        <RemoteImage
-          source={{ uri: item.thumbnail }}
-          style={styles.profileImage}
-        />
-
-        <View style={{ flex: 1 }}>
-          <TextContainer
-            isDynamicText
-            text={item.title}
-            style={{ fontSize: scale(12) }}
-          />
-          <TextContainer
-            isDynamicText
-            text={item.description}
-            style={{
-              marginVertical: verticalScale(6),
-              fontFamily: fontFamily.medium,
-            }}
-            numberOfLines={2}
-          />
-          <View style={styles.flexRow}>
-            <View
-              style={{ flexDirection: "row", alignItems: "center", flex: 1 }}
-            >
-              <RemoteImage
-                source={{
-                  uri: "https://www.profilebakery.com/wp-content/uploads/2023/03/AI-Profile-Picture.jpg",
-                }}
-                style={styles.imageStyle}
-              />
-              <TextContainer
-                isDynamicText
-                text="Regulators"
-                style={styles.textStyle}
-              />
-            </View>
-            <TextContainer
-              isDynamicText
-              text="June 14 2023"
-              style={styles.textStyle}
-            />
-          </View>
-        </View>
-      </Pressable>
-    );
-  }
-);
 
 const stylesheet = createStyleSheet((theme) => ({
   container: {
@@ -101,5 +40,47 @@ const stylesheet = createStyleSheet((theme) => ({
     color: theme.colors.opacity50,
   },
 }));
+
+interface HomeListItemsProps {
+  item: ProductsData;
+  navigation: NavigationProp<HomeStackParamList>;
+}
+
+const HomeListItems: React.FC<HomeListItemsProps> = memo(({ item, navigation }) => {
+  const { styles } = useStyles(stylesheet);
+  return (
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate("PostDetails", { productId: item.id })}
+    >
+      <RemoteImage source={{ uri: item.thumbnail }} style={styles.profileImage} />
+
+      <View style={{ flex: 1 }}>
+        <TextContainer isDynamicText text={item.title} style={{ fontSize: scale(12) }} />
+        <TextContainer
+          isDynamicText
+          text={item.description}
+          style={{
+            marginVertical: verticalScale(6),
+            fontFamily: fontFamily.medium,
+          }}
+          numberOfLines={2}
+        />
+        <View style={styles.flexRow}>
+          <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
+            <RemoteImage
+              source={{
+                uri: "https://www.profilebakery.com/wp-content/uploads/2023/03/AI-Profile-Picture.jpg",
+              }}
+              style={styles.imageStyle}
+            />
+            <TextContainer isDynamicText text="Regulators" style={styles.textStyle} />
+          </View>
+          <TextContainer isDynamicText text="June 14 2023" style={styles.textStyle} />
+        </View>
+      </View>
+    </Pressable>
+  );
+});
 
 export default HomeListItems;

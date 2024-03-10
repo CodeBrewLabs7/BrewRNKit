@@ -1,23 +1,35 @@
 import { TextContainer } from "@components/atoms";
 import { moderateScale } from "@utils/scaling";
 import React from "react";
-import { ActivityIndicator, Pressable, PressableProps } from "react-native";
-import {
-  UnistylesRuntime,
-  createStyleSheet,
-  useStyles,
-} from "react-native-unistyles";
+import { ViewStyle, TextStyle, ActivityIndicator, Pressable, PressableProps } from "react-native";
+import { UnistylesRuntime, createStyleSheet, useStyles } from "react-native-unistyles";
+
+const stylesheet = createStyleSheet((theme) => ({
+  btnStyle: (isDarkMode: boolean) => ({
+    height: moderateScale(52),
+    backgroundColor: isDarkMode ? theme.colors.white : theme.colors.black,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: moderateScale(8),
+  }),
+}));
 
 interface CustomButtonProps extends PressableProps {
   label: string;
-  style?: {};
-  textStyle?: {};
+  style?: ViewStyle;
+  textStyle?: object;
   isLoading?: boolean;
 }
 
+const defaultProps = {
+  textStyle: {} as TextStyle,
+  style: {} as ViewStyle,
+  isLoading: false as boolean,
+};
+
 const ButtonContainer: React.FC<CustomButtonProps> = ({
   label,
-  isLoading = false,
+  isLoading,
   style,
   textStyle,
   ...props
@@ -28,9 +40,7 @@ const ButtonContainer: React.FC<CustomButtonProps> = ({
   return (
     <Pressable style={[styles.btnStyle(isDarkMode), style]} {...props}>
       {isLoading ? (
-        <ActivityIndicator
-          color={isDarkMode ? theme.colors.black : theme.colors.white}
-        />
+        <ActivityIndicator color={isDarkMode ? theme.colors.black : theme.colors.white} />
       ) : (
         <TextContainer
           text={label}
@@ -44,14 +54,6 @@ const ButtonContainer: React.FC<CustomButtonProps> = ({
   );
 };
 
-const stylesheet = createStyleSheet((theme) => ({
-  btnStyle: (isDarkMode: boolean) => ({
-    height: moderateScale(52),
-    backgroundColor: isDarkMode ? theme.colors.white : theme.colors.black,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: moderateScale(8),
-  }),
-}));
+ButtonContainer.defaultProps = defaultProps;
 
 export default React.memo(ButtonContainer);

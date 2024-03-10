@@ -2,31 +2,10 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale } from "@utils/scaling";
-import React, { PropsWithChildren } from "react";
-import { View } from "react-native";
+import type { PropsWithChildren } from "react";
+import React from "react";
+import { TextStyle, View, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-  style?: object;
-  textStyle?: object;
-}>;
-
-function SearchBar({
-  title,
-  style,
-  textStyle,
-}: SectionProps): React.JSX.Element {
-  const { styles } = useStyles(stylesheet);
-
-  return (
-    <View style={[styles.container, style]}>
-      <ImageContainer source={imagePath.icSearch} />
-      <TextContainer style={[styles.titleStyle, textStyle]} text={title} />
-    </View>
-  );
-}
-export default React.memo(SearchBar);
 
 const stylesheet = createStyleSheet((theme) => ({
   container: {
@@ -45,3 +24,29 @@ const stylesheet = createStyleSheet((theme) => ({
     marginLeft: moderateScale(16),
   },
 }));
+
+type SectionProps = PropsWithChildren<{
+  title: string;
+  style?: ViewStyle;
+  textStyle?: TextStyle;
+}>;
+
+// Define default props
+const defaultProps = {
+  textStyle: {} as TextStyle,
+  style: {} as ViewStyle,
+};
+const SearchBar = ({ title, style, textStyle }: SectionProps): React.JSX.Element => {
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <View style={[styles.container, style]}>
+      <ImageContainer source={imagePath.icSearch} />
+      <TextContainer style={[styles.titleStyle, textStyle]} text={title} />
+    </View>
+  );
+};
+
+// Assign default props to the component
+SearchBar.defaultProps = defaultProps;
+export default React.memo(SearchBar);

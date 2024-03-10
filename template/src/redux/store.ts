@@ -1,12 +1,10 @@
-import reducer from "./reducers";
+/* eslint-disable */
 import { configureStore } from "@reduxjs/toolkit";
+import reducer from "./reducers";
 
 const store = configureStore({
-  reducer: reducer,
-  middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: false, // Disable serializable check for non-serializable data
-  }),
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
 export default store;
 

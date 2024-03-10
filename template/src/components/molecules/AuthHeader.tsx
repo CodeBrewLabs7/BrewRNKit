@@ -2,34 +2,10 @@ import { ImageContainer, TextContainer } from "@components/atoms";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
-import React, { PropsWithChildren } from "react";
-import { View } from "react-native";
+import React from "react";
+import type { PropsWithChildren } from "react";
+import { View, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-  description: string;
-  style?: object;
-}>;
-
-function AuthHeader(props: SectionProps): React.JSX.Element {
-  const { styles } = useStyles(stylesheet);
-  return (
-    <>
-      <View style={[styles.headerStyle, props.style]}>
-        <ImageContainer source={imagePath.icStar} />
-        <ImageContainer
-          style={{ marginLeft: moderateScale(16), width: "100%" }}
-          source={imagePath.icLine}
-          resizeMode="cover"
-        />
-      </View>
-      <TextContainer style={styles.titleStyle} text={props.title} />
-      <TextContainer style={styles.descStyle} text={props.description} />
-    </>
-  );
-}
-export default React.memo(AuthHeader);
 
 const stylesheet = createStyleSheet(() => ({
   headerStyle: {
@@ -50,3 +26,35 @@ const stylesheet = createStyleSheet(() => ({
     fontFamily: fontFamily.regular,
   },
 }));
+
+type SectionProps = PropsWithChildren<{
+  title: string;
+  description: string;
+  style?: object;
+}>;
+
+const defaultProps = {
+  style: {} as ViewStyle,
+};
+
+const AuthHeader = ({ title, description, style }: SectionProps): React.JSX.Element => {
+  const { styles } = useStyles(stylesheet);
+  return (
+    <>
+      <View style={[styles.headerStyle, style]}>
+        <ImageContainer source={imagePath.icStar} />
+        <ImageContainer
+          style={{ marginLeft: moderateScale(16), width: "100%" }}
+          source={imagePath.icLine}
+          resizeMode="cover"
+        />
+      </View>
+      <TextContainer style={styles.titleStyle} text={title} />
+      <TextContainer style={styles.descStyle} text={description} />
+    </>
+  );
+};
+
+AuthHeader.defaultProps = defaultProps;
+
+export default React.memo(AuthHeader);

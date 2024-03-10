@@ -1,10 +1,10 @@
-import axios, { AxiosError, CancelToken } from "axios";
+/* eslint-disable */
+import type { ExtendedApiErrorResponse } from "@models/ApiErrorResponse";
+import type { User } from "@models/User";
+import type { LocalStorage } from "@typings/global";
+import axios from "axios";
 import { MMKV } from "react-native-mmkv";
-import { APIS } from "./routes";
-import { ExtendedApiErrorResponse } from "@models/ApiErrorResponse";
-import { User } from "@models/User";
-import { LocalStorage } from "@typings/global";
-import { ThemeInterface } from "@redux/reducers/settings";
+import type { APIS } from "./routes";
 export const storage = new MMKV();
 
 interface PostOptions {
@@ -13,7 +13,7 @@ interface PostOptions {
 
 const api = axios.create({
   baseURL: "https://dummyjson.com", // Replace with your API base URL
-  timeout: 10000, // Set a timeout for requests (in milliseconds)
+  timeout: 10000 // Set a timeout for requests (in milliseconds)
 });
 
 const handleApiError = (error: ExtendedApiErrorResponse) => {
@@ -21,34 +21,38 @@ const handleApiError = (error: ExtendedApiErrorResponse) => {
   if (error.response) {
     switch (error.axiosError?.status) {
       case 401: {
-        //handle your unauthorized error here
+        // handle your unauthorized error here
         return { ...error.response, error: error.message };
       }
       default: {
-        if (error && error.response && !!error.response.data.error) {
-          if (!error.message) {
-            return {
-              ...error.response,
-              error: error.response.data.error || "Network Error",
-            };
-          }
-          return error.response.data;
-        } else {
-          return { error: `${error.message}` };
+        if (!error) {
+            return { error: "Unknown error" };
         }
-      }
+    
+        if (error.response && error.response.data.error && !error.message) {
+            return {
+                ...error.response,
+                error: error.response.data.error || "Network Error"
+            };
+        }
+    
+        if (error.response && error.response.data) {
+            return error.response.data;
+        }
+    
+        return { error: `${error.message}` };
     }
-  } else {
-    return { error: error.message };
+    }
   }
-};
+  return { error: error.message }
+}
 
 // Axios interceptor to add Authorization header before each request
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(config => {
   // Add the Authorization header if a token is present
   const userData = getItem("userData");
-  if (!!userData) {
-    config.headers.Authorization = `Bearer ${userData.token}`;
+  if (userData) {
+    config.headers.Authorization = `Bearer ${userData.token}`
   }
   return config;
 });
@@ -113,6 +117,4 @@ export const getItem = (key: LocalStorage): User | null  => {
   }
 };
 
-export const clearAllItem = () => {
-  return storage.clearAll();
-};
+export const clearAllItem = () => storage.clearAll();

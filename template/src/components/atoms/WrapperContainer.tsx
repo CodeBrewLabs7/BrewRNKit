@@ -1,17 +1,26 @@
-import React,{PropsWithChildren} from "react";
-import { SafeAreaView, StatusBar, View } from "react-native";
+import React from "react";
+import type { PropsWithChildren } from "react";
+import { SafeAreaView, StatusBar, View, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+const stylesheet = createStyleSheet((theme) => ({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.background,
+  },
+}));
 
 type SectionProps = PropsWithChildren<{
   style?: object;
   isSafeAreaView?: boolean;
 }>;
 
-const WrapperContainer = ({
-  children,
-  style = {},
-  isSafeAreaView = true,
-}: SectionProps): React.JSX.Element => {
+const defaultProps = {
+  style: {} as ViewStyle,
+  isSafeAreaView: true as boolean,
+};
+
+const WrapperContainer = ({ children, style, isSafeAreaView }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   const { theme } = useStyles();
 
@@ -22,21 +31,15 @@ const WrapperContainer = ({
         {children}
       </SafeAreaView>
     );
-  } else {
-    return (
-      <View style={[styles.container, style]}>
-        <StatusBar barStyle={theme.colors.barStyle} />
-        {children}
-      </View>
-    );
   }
+  return (
+    <View style={[styles.container, style]}>
+      <StatusBar barStyle={theme.colors.barStyle} />
+      {children}
+    </View>
+  );
 };
 
-export default React.memo(WrapperContainer);
+WrapperContainer.defaultProps = defaultProps;
 
-const stylesheet = createStyleSheet((theme) => ({
-  container: {
-    flex: 1,
-    backgroundColor: theme.colors.background,
-  }
-}));
+export default React.memo(WrapperContainer);

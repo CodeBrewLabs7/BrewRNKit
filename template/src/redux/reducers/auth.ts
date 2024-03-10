@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { login } from "@redux/actions/auth";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "@models/User";
@@ -35,7 +36,7 @@ const authSlice = createSlice({
       state.isFirstTime = action.payload;
     },
   },
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
     });

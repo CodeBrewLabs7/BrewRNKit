@@ -1,24 +1,30 @@
-import { TextContainer, WrapperContainer } from "@components/atoms";
-import CustomButton from "@components/atoms/ButtonContainer";
-import { CustomTextInput } from "@components/molecules";
-import AuthHeader from "@components/molecules/AuthHeader";
-import RememberMe from "@components/molecules/RememberMe";
+import { TextContainer, WrapperContainer, ButtonContainer } from "@components/atoms";
+import { CustomTextInput, AuthHeader, RememberMe } from "@components/molecules";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import { AuthStackParamList } from "@navigations/AuthStack";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import type { AuthStackParamList } from "@navigations/AuthStack";
+import type { NavigationProp } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { login } from "@redux/actions/auth";
 import { useDispatch, useSelector } from "@redux/hooks";
 import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
 import React, { useState } from "react";
-import {
-  Keyboard,
-  Platform,
-  TouchableWithoutFeedback,
-  View
-} from "react-native";
+import { Alert, Keyboard, Platform, TouchableWithoutFeedback, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+const stylesheet = createStyleSheet(() => ({
+  container: {
+    flex: 1,
+    marginHorizontal: moderateScale(16),
+    justifyContent: "space-between",
+  },
+  bottomView: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
+  },
+}));
 
 const Login = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
@@ -31,21 +37,33 @@ const Login = (): React.JSX.Element => {
 
   const dispatch = useDispatch();
 
+  const alertFunction = (title: string, message: string) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => {} },
+      ],
+      { cancelable: false },
+    );
+  };
+
   const onLogin = async () => {
-    let isValid = validate({
+    const isValid = validate({
       name: username,
       password,
     });
 
-    if (isValid == true) {
-      let res = await dispatch(login({ username, password, deviceType: Platform.OS }))
-      if (res.meta.requestStatus == "rejected") {
-        //@ts-ignore
-        alert(res.payload.error);
+    if (isValid === true) {
+      const res = await dispatch(login({ username, password, deviceType: Platform.OS }));
+      if (res.meta.requestStatus === "rejected") {
+        alertFunction("Error", "An error occurred");
       }
-    } else {
-      //@ts-ignore
-      alert(isValid);
     }
   };
 
@@ -67,7 +85,7 @@ const Login = (): React.JSX.Element => {
               onChangeText={setUsername}
             />
             <CustomTextInput
-            value={password}
+              value={password}
               leftImage={imagePath.icLock}
               label="PASSWORD"
               placeholder="ENTER_YOUR_PASSWORD"
@@ -76,12 +94,8 @@ const Login = (): React.JSX.Element => {
               onChangeText={setPassword}
             />
 
-            <RememberMe onPressForgot={() => alert("Forgot password")} />
-            <CustomButton
-              isLoading={isLoading}
-              label="LOG_IN"
-              onPress={onLogin}
-            />
+            <RememberMe onPressForgot={() => alertFunction("Password", "Forgot Password")} />
+            <ButtonContainer isLoading={isLoading} label="LOG_IN" onPress={onLogin} />
           </View>
 
           <View style={styles.bottomView}>
@@ -100,21 +114,5 @@ const Login = (): React.JSX.Element => {
     </WrapperContainer>
   );
 };
-
-
-const stylesheet = createStyleSheet(() => ({
-  container: {
-    flex: 1,
-    marginHorizontal: moderateScale(16),
-    justifyContent: "space-between",
-  },
-  bottomView: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "center",
-  },
-}));
-
-
 
 export default Login;

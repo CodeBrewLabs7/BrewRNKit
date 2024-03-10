@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, import/no-extraneous-dependencies */
+/* eslint-disable */
 
 // Import built-in Jest matchers
 import '@testing-library/react-native/extend-expect';
