@@ -8,7 +8,7 @@ import {
 } from "@utils/scaling";
 import { createStyleSheet } from "react-native-unistyles";
 
-const stylesheet = createStyleSheet(theme => ({
+const stylesheet = createStyleSheet((theme) => ({
   imageStyle: {
     width,
     minHeight: height / 2.5,

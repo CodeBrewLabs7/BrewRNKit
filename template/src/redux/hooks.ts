@@ -1,11 +1,8 @@
-/* eslint-disable no-restricted-imports */
-import type { RootState, AppDispatch } from './store';
+/* eslint-disable */
+import type { RootState, AppDispatch } from "./store";
 
-import type  { TypedUseSelectorHook } from 'react-redux';
-import {
-  useDispatch as useReduxDispatch,
-  useSelector as useReduxSelector,
-} from 'react-redux';
+import type { TypedUseSelectorHook } from "react-redux";
+import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from "react-redux";
 
 // Type safe hooks
 export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;

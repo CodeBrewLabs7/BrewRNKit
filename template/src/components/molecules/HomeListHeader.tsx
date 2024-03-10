@@ -6,23 +6,6 @@ import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import SearchBar from "./SearchBar";
 
-const HomeListHeader: React.FC = memo(() => {
-  const { styles } = useStyles(stylesheet);
-  return (
-    <>
-      <SearchBar
-        textStyle={styles.textStyle}
-        title="FIND_INTERESTING_BLOG"
-        style={styles.searchBarStyle}
-      />
-      <View style={styles.flexRow}>
-        <TextContainer text="RECOMMEND" style={styles.recommendTextStyle} />
-        <TextContainer text="SEE_MORE" />
-      </View>
-    </>
-  );
-});
-
 const stylesheet = createStyleSheet((theme) => ({
   searchBarStyle: {
     marginTop: verticalScale(28),
@@ -41,8 +24,25 @@ const stylesheet = createStyleSheet((theme) => ({
     fontFamily: fontFamily.medium,
   },
   textStyle: {
-    color: theme.colors.typography
+    color: theme.colors.typography,
   },
 }));
+
+const HomeListHeader: React.FC = memo(() => {
+  const { styles } = useStyles(stylesheet);
+  return (
+    <>
+      <SearchBar
+        textStyle={styles.textStyle}
+        title="FIND_INTERESTING_BLOG"
+        style={styles.searchBarStyle}
+      />
+      <View style={styles.flexRow}>
+        <TextContainer text="RECOMMEND" style={styles.recommendTextStyle} />
+        <TextContainer text="SEE_MORE" />
+      </View>
+    </>
+  );
+});
 
 export default React.memo(HomeListHeader);

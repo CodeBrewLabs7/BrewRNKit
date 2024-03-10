@@ -1,8 +1,5 @@
-import { TextContainer, WrapperContainer } from "@components/atoms";
-import CustomButton from "@components/atoms/ButtonContainer";
-import { CustomTextInput } from "@components/molecules";
-import AuthHeader from "@components/molecules/AuthHeader";
-import RememberMe from "@components/molecules/RememberMe";
+import { TextContainer, WrapperContainer, ButtonContainer } from "@components/atoms";
+import { CustomTextInput, AuthHeader, RememberMe } from "@components/molecules";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
 import type { AuthStackParamList } from "@navigations/AuthStack";
@@ -13,13 +10,21 @@ import { useDispatch, useSelector } from "@redux/hooks";
 import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
 import React, { useState } from "react";
-import {
-  Keyboard,
-  Platform,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { Alert, Keyboard, Platform, TouchableWithoutFeedback, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+
+const stylesheet = createStyleSheet(() => ({
+  container: {
+    flex: 1,
+    marginHorizontal: moderateScale(16),
+    justifyContent: "space-between",
+  },
+  bottomView: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
+  },
+}));
 
 const Login = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
@@ -32,6 +37,22 @@ const Login = (): React.JSX.Element => {
 
   const dispatch = useDispatch();
 
+  const alertFunction = (title: string, message: string) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {
+          text: "Cancel",
+          onPress: () => {},
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => {} },
+      ],
+      { cancelable: false },
+    );
+  };
+
   const onLogin = async () => {
     const isValid = validate({
       name: username,
@@ -39,11 +60,10 @@ const Login = (): React.JSX.Element => {
     });
 
     if (isValid === true) {
-      const res = await dispatch(
-        login({ username, password, deviceType: Platform.OS })
-      );
-      // @ts-ignore
-      res.meta.requestStatus === "rejected" ? alert(res.payload.error) : alert(isValid);
+      const res = await dispatch(login({ username, password, deviceType: Platform.OS }));
+      if (res.meta.requestStatus === "rejected") {
+        alertFunction("Error", "An error occurred");
+      }
     }
   };
 
@@ -74,12 +94,8 @@ const Login = (): React.JSX.Element => {
               onChangeText={setPassword}
             />
 
-            <RememberMe onPressForgot={() => alert("Forgot password")} />
-            <CustomButton
-              isLoading={isLoading}
-              label="LOG_IN"
-              onPress={onLogin}
-            />
+            <RememberMe onPressForgot={() => alertFunction("Password", "Forgot Password")} />
+            <ButtonContainer isLoading={isLoading} label="LOG_IN" onPress={onLogin} />
           </View>
 
           <View style={styles.bottomView}>
@@ -100,16 +116,3 @@ const Login = (): React.JSX.Element => {
 };
 
 export default Login;
-
-const stylesheet = createStyleSheet(() => ({
-  container: {
-    flex: 1,
-    marginHorizontal: moderateScale(16),
-    justifyContent: "space-between",
-  },
-  bottomView: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "center",
-  },
-}));

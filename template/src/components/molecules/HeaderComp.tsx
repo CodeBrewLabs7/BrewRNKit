@@ -4,44 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { moderateScale } from "@utils/scaling";
 import React from "react";
 import type { PropsWithChildren } from "react";
-import { Pressable, View } from "react-native";
+import { Pressable, View, ViewStyle, ImageSourcePropType } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-type SectionProps = PropsWithChildren<{
-  style?: object;
-  leftImage?: string;
-  rightImage?: string;
-  onPressLeft?: () => void;
-  onPressRight?: () => void;
-}>;
-
-const HeaderComp = ({
-  style,
-  leftImage = imagePath.icBack, // set default value
-  rightImage = imagePath.icShare, // set default value
-  onPressLeft,
-  onPressRight,
-}: SectionProps): React.JSX.Element => {
-  const navigation = useNavigation();
-
-  const { styles } = useStyles(stylesheet);
-
-  return (
-    <>
-      <View style={{ ...styles.headerStyle, ...style }}>
-        <Pressable
-          onPress={onPressLeft ? onPressLeft : () => navigation.goBack()}
-        >
-          <RoundImageBorder source={leftImage} />
-        </Pressable>
-        <Pressable onPress={onPressRight}>
-          <RoundImageBorder source={rightImage} />
-        </Pressable>
-      </View>
-    </>
-  );
-};
-export default React.memo(HeaderComp);
 
 const stylesheet = createStyleSheet(() => ({
   headerStyle: {
@@ -51,3 +15,45 @@ const stylesheet = createStyleSheet(() => ({
     height: moderateScale(60),
   },
 }));
+
+type SectionProps = PropsWithChildren<{
+  style?: object;
+  leftImage?: ImageSourcePropType;
+  rightImage?: ImageSourcePropType;
+  onPressLeft?: () => void;
+  onPressRight?: () => void;
+}>;
+
+const defaultProps = {
+  style: {} as ViewStyle,
+  leftImage: imagePath.icBack as ImageSourcePropType,
+  rightImage: imagePath.icShare as ImageSourcePropType,
+  onPressLeft: undefined,
+  onPressRight: undefined,
+};
+const HeaderComp = ({
+  style,
+  leftImage,
+  rightImage,
+  onPressLeft,
+  onPressRight,
+}: SectionProps): React.JSX.Element => {
+  const navigation = useNavigation();
+
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <View style={{ ...styles.headerStyle, ...style }}>
+      <Pressable onPress={onPressLeft || (() => navigation.goBack())}>
+        <RoundImageBorder source={leftImage} />
+      </Pressable>
+      <Pressable onPress={onPressRight}>
+        <RoundImageBorder source={rightImage} />
+      </Pressable>
+    </View>
+  );
+};
+
+HeaderComp.defaultProps = defaultProps;
+
+export default React.memo(HeaderComp);

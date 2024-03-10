@@ -1,10 +1,10 @@
+import type { RootState } from "@redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useSelector } from "@redux/hooks";
 import React from "react";
 import AuthStack from "./AuthStack";
 import MainStack from "./MainStack";
-import type { RootState } from "@redux/store";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +17,6 @@ const Routes = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default Routes;

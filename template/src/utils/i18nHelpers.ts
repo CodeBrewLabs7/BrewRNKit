@@ -3,9 +3,9 @@ import i18n from "i18next";
 import { I18nManager } from "react-native";
 import RNRestart from "react-native-restart";
 import { setItem } from "src/services/apiService";
-export const changeLanguage = (lng: LanguageInterface) => {
 
-  if (i18n.language === lng.sortName) { 
+const changeLanguage = (lng: LanguageInterface) => {
+  if (i18n.language === lng.sortName) {
     return;
   }
   setItem("defaultLanguage", lng);
@@ -14,3 +14,5 @@ export const changeLanguage = (lng: LanguageInterface) => {
   I18nManager.forceRTL(isArabic);
   RNRestart.restart();
 };
+
+export default changeLanguage;

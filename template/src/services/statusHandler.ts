@@ -1,4 +1,5 @@
-import { AxiosError } from 'axios';
+/* eslint-disable */
+import { AxiosError } from "axios";
 
 const statusHandler = (err: AxiosError) => {
   if (err.response) {

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { AsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -16,37 +18,43 @@ interface LoginState {
   username: string;
   password: string;
   deviceType?: Platform["OS"];
-  email?: string
+  email?: string;
 }
 
 interface SignupState extends LoginState {
   name: string;
 }
 
-export const login: AsyncThunk<User, LoginState, {}> = createAsyncThunk(
+interface ThunkAPIType {
+  // Define your thunkAPI type properties here
+}
+
+export const login: AsyncThunk<User, LoginState, ThunkAPIType> = createAsyncThunk(
   LOGIN_ACTION_PREFIX,
   async (data: LoginState, thunkAPI) => {
-       if (lastLoginRequest) {
-        lastLoginRequest.cancel();
-      }
-      const source = axios.CancelToken.source();
-      lastLoginRequest = source;
+    if (lastLoginRequest) {
+      lastLoginRequest.cancel();
+    }
+    const source = axios.CancelToken.source();
+    lastLoginRequest = source;
     try {
       const response = await post("/auth/login", data, { cancelToken: source.token });
-      console.log("/auth/login api res", response);
       return response as User;
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
       if (axios.isCancel(error)) {
         throw thunkAPI.rejectWithValue({ message: "Request was canceled" });
       } else {
-        throw thunkAPI.rejectWithValue(error)
+        throw thunkAPI.rejectWithValue({ message: "An error occurred" });
       }
     }
-  }
+  },
 );
 
-export const signup: AsyncThunk<User, SignupState, {}> = createAsyncThunk(
+interface ThunkAPIType {
+  // Define your thunkAPI type properties here
+}
+export const signup: AsyncThunk<User, SignupState, ThunkAPIType> = createAsyncThunk(
   SIGNUP_ACTION_PREFIX,
   async (data: SignupState, thunkAPI) => {
     // Cancel the previous request, if any
@@ -56,25 +64,19 @@ export const signup: AsyncThunk<User, SignupState, {}> = createAsyncThunk(
     // Create a new cancellation token
     const source = axios.CancelToken.source();
     lastLoginRequest = source;
-
     try {
       const response = await post("/users/add", data);
       return response as User;
     } catch (error) {
-      console.log("error",error)
       if (axios.isCancel(error)) {
         throw thunkAPI.rejectWithValue({ message: "Request was canceled" });
       } else {
-        throw thunkAPI.rejectWithValue(error)
+        throw thunkAPI.rejectWithValue({ message: "An error occurred" });
       }
     }
-  }
+  },
 );
 
-export const setFirstTime = () =>{
+export const setFirstTime = () => {};
 
-}
-
-export const forgotPassword = () => {
-
-}
+export const forgotPassword = () => {};

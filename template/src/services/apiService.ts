@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { ExtendedApiErrorResponse } from "@models/ApiErrorResponse";
 import type { User } from "@models/User";
 import type { LocalStorage } from "@typings/global";

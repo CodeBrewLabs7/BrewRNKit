@@ -1,19 +1,19 @@
-import { AxiosError } from "axios"
+import { AxiosError } from "axios";
 
 type ResponseStatus = {
   data: {
-    error: string,
-    status: boolean
-  }
+    error: string;
+    status: boolean;
+  };
+};
+
+export interface ApiErrorResponse {
+  status?: boolean;
+  message?: string;
+  error?: Error;
+  response?: ResponseStatus;
 }
 
-  export interface ApiErrorResponse {
-    status?: boolean;
-    message?: string;
-    error?: Error;
-    response?: ResponseStatus;
-  }
-  
-  export interface ExtendedApiErrorResponse extends ApiErrorResponse {
-    axiosError?: AxiosError;
-  }
+export interface ExtendedApiErrorResponse extends ApiErrorResponse {
+  axiosError?: AxiosError;
+}

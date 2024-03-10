@@ -3,35 +3,22 @@ import fontFamily from "@constants/fontFamily";
 import type { AuthStackParamList } from "@navigations/AuthStack";
 import type { NavigationProp } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
-import {
-  height,
-  moderateScale,
-  scale,
-  verticalScale,
-  width,
-} from "@utils/scaling";
+import { height, moderateScale, scale, verticalScale, width } from "@utils/scaling";
 import React, { useRef, useState } from "react";
-import { Image, ScrollView, View } from "react-native";
-import {
-  UnistylesRuntime,
-  createStyleSheet,
-  useStyles,
-} from "react-native-unistyles";
+import { Image, NativeScrollEvent, NativeSyntheticEvent, ScrollView, View } from "react-native";
+import { useStyles } from "react-native-unistyles";
+import stylesheet from "./styles";
 
-const onBoardData = [{}, {}, {}];
+const onBoardData = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
 const Onboarding = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [index, setIndex] = useState<number>(0);
-  const { styles, theme } = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet);
+  const scrollRef = useRef<ScrollView>(null);
 
-  const isDarkMode = UnistylesRuntime.themeName === "dark";
-  const scrollRef = useRef<any>();
-
-  const handleScroll = (event: any) => {
-    const newIndex = Number(
-      (event.nativeEvent.contentOffset.x / (width - 20)).toFixed(0)
-    );
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const newIndex = Number((event.nativeEvent.contentOffset.x / (width - 20)).toFixed(0));
     setIndex(newIndex);
   };
 
@@ -45,13 +32,13 @@ const Onboarding = (): React.JSX.Element => {
           onMomentumScrollEnd={handleScroll}
           ref={scrollRef}
         >
-          {onBoardData.map((val, i) => (
+          {onBoardData.map((val) => (
             <View
               style={{
                 width,
                 paddingHorizontal: moderateScale(16),
               }}
-              key={String(i)}
+              key={String(val.id)}
             >
               <Image
                 source={{
@@ -86,40 +73,16 @@ const Onboarding = (): React.JSX.Element => {
         <View style={styles.flexView}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             {onBoardData.map((val, i) => (
-              <View key={String(i)} style={styles.dotStyle(i === index)} />
+              <View key={String(val.id)} style={styles.dotStyle(i === index)} />
             ))}
           </View>
           <View>
-            <TextContainer
-              text="SKIP"
-              onPress={() => navigation.navigate("Login")}
-            />
+            <TextContainer text="SKIP" onPress={() => navigation.navigate("Login")} />
           </View>
         </View>
       </View>
     </WrapperContainer>
   );
 };
-
-const stylesheet = createStyleSheet((theme) => ({
-  container: {
-    flex: 1,
-    justifyContent: "space-between",
-    marginVertical: verticalScale(16),
-  },
-  dotStyle: (isSelected: boolean) => ({
-    height: moderateScale(6),
-    width: moderateScale(6),
-    borderRadius: moderateScale(4),
-    marginRight: moderateScale(8),
-    backgroundColor: isSelected ? theme.colors.darkwhite : theme.colors.grey,
-  }),
-  flexView: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginHorizontal: moderateScale(16),
-  },
-}));
 
 export default Onboarding;

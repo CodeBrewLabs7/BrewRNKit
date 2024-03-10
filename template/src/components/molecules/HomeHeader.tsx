@@ -4,39 +4,8 @@ import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React from "react";
 import type { PropsWithChildren } from "react";
-import { Image, Pressable, View } from "react-native";
+import { Image, Pressable, View, ViewStyle } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
-type SectionProps = PropsWithChildren<{
-  title?: string;
-  style?: object;
-  onPress?: () => void;
-}>;
-
-const HeaderComp = (props: SectionProps): React.JSX.Element => {
-  const { styles } = useStyles(stylesheet);
-  return (
-    <View key="header" style={{ ...styles.headerStyle, ...props.style }}>
-      <Image
-        key="profileImage"
-        source={{
-          uri: "https://m.media-amazon.com/images/I/31Cd9UQp6eL._AC_UF1000,1000_QL80_.jpg",
-        }}
-        style={styles.profileImage}
-      />
-      <TextContainer
-        key="title"
-        style={styles.titleStyle}
-        text={`${props.title}`}
-      />
-      <Pressable key="setting" onPress={props.onPress}>
-        <ImageContainer source={imagePath.icSetting} />
-      </Pressable>
-    </View>
-  );
-};
-
-export default React.memo(HeaderComp);
 
 const stylesheet = createStyleSheet(() => ({
   headerStyle: {
@@ -64,3 +33,39 @@ const stylesheet = createStyleSheet(() => ({
     borderRadius: moderateScale(25),
   },
 }));
+
+type SectionProps = PropsWithChildren<{
+  title?: string;
+  style?: ViewStyle;
+  onPress?: () => void;
+}>;
+
+// Define default props
+const defaultProps = {
+  style: {} as ViewStyle,
+  title: "" as string,
+  onPress: undefined as (() => void) | undefined,
+};
+
+const HeaderComp = ({ title, onPress, style }: SectionProps): React.JSX.Element => {
+  const { styles } = useStyles(stylesheet);
+  return (
+    <View key="header" style={{ ...styles.headerStyle, ...style }}>
+      <Image
+        key="profileImage"
+        source={{
+          uri: "https://m.media-amazon.com/images/I/31Cd9UQp6eL._AC_UF1000,1000_QL80_.jpg",
+        }}
+        style={styles.profileImage}
+      />
+      <TextContainer key="title" style={styles.titleStyle} text={`${title}`} />
+      <Pressable key="setting" onPress={onPress}>
+        <ImageContainer source={imagePath.icSetting} />
+      </Pressable>
+    </View>
+  );
+};
+
+HeaderComp.defaultProps = defaultProps;
+
+export default React.memo(HeaderComp);
