@@ -1,4 +1,9 @@
-import { ButtonContainer, ImageContainer, TextContainer, WrapperContainer } from "@components/atoms";
+import {
+  ButtonContainer,
+  ImageContainer,
+  TextContainer,
+  WrapperContainer,
+} from "@components/atoms";
 import ErrorComp from "@components/molecules/ErrorComp";
 import HeaderComp from "@components/molecules/HeaderComp";
 import Loader from "@components/molecules/Loader";
@@ -21,7 +26,11 @@ type Props = {
 };
 
 const PostDetails: React.FC<Props> = ({ route }): React.JSX.Element => {
-  const { data: posts, isLoading, isError } = useCustomQuery<ProductsData>("/products", `/${route.params.productId}`);
+  const {
+    data: posts,
+    isLoading,
+    isError,
+  } = useCustomQuery<ProductsData>("/products", `/${route.params.productId}`);
 
   const { styles } = useStyles(stylesheet);
   const { theme } = useStyles();
@@ -42,7 +51,11 @@ const PostDetails: React.FC<Props> = ({ route }): React.JSX.Element => {
           overflow: "visible",
         }}
       >
-        <ImageBackground resizeMode="stretch" source={{ uri: posts?.thumbnail }} style={styles.imageStyle}>
+        <ImageBackground
+          resizeMode="stretch"
+          source={{ uri: posts?.thumbnail }}
+          style={styles.imageStyle}
+        >
           <SafeAreaView>
             <HeaderComp />
           </SafeAreaView>
@@ -79,18 +92,32 @@ const PostDetails: React.FC<Props> = ({ route }): React.JSX.Element => {
           <View style={styles.rectangleBox}>
             <View style={{ width: width / 2 }}>
               <TextContainer text="FOLLOW_US" style={styles.followUs} />
-              <TextContainer isDynamicText text="Over 35k Happy Customers" style={{ color: theme.colors.white }} />
+              <TextContainer
+                isDynamicText
+                text="Over 35k Happy Customers"
+                style={{ color: theme.colors.white }}
+              />
             </View>
-            <ButtonContainer label="FOLLOW" style={styles.btnStyle} textStyle={styles.btnTextStyle} />
+            <ButtonContainer
+              label="FOLLOW"
+              style={styles.btnStyle}
+              textStyle={styles.btnTextStyle}
+            />
           </View>
 
           <View style={styles.likeCommentView}>
             <View style={styles.flexView}>
-              <ImageContainer source={imagePath.icLike} style={{ resizeMode: "contain", marginRight: moderateScale(8) }} />
+              <ImageContainer
+                source={imagePath.icLike}
+                style={{ resizeMode: "contain", marginRight: moderateScale(8) }}
+              />
               <TextContainer isDynamicText style={{ fontSize: scale(12) }} text="25.3k LIKES" />
             </View>
             <View style={{ ...styles.flexView, flex: 0.4 }}>
-              <ImageContainer source={imagePath.icComment} style={{ resizeMode: "contain", marginRight: moderateScale(8) }} />
+              <ImageContainer
+                source={imagePath.icComment}
+                style={{ resizeMode: "contain", marginRight: moderateScale(8) }}
+              />
               <TextContainer isDynamicText style={{ fontSize: scale(12) }} text="2.1k COMMENTS" />
             </View>
 
@@ -118,9 +145,17 @@ const PostDetails: React.FC<Props> = ({ route }): React.JSX.Element => {
             }}
           />
 
-          <TextContainer isDynamicText style={{ color: theme.colors.blue }} text={posts?.brand || ""} />
+          <TextContainer
+            isDynamicText
+            style={{ color: theme.colors.blue }}
+            text={posts?.brand || ""}
+          />
           <TextContainer isDynamicText style={styles.headerTextStyle} text={posts?.title || ""} />
-          <TextContainer isDynamicText style={styles.descTextStyle} text={posts?.description || ""} />
+          <TextContainer
+            isDynamicText
+            style={styles.descTextStyle}
+            text={posts?.description || ""}
+          />
         </View>
       </ScrollView>
     </WrapperContainer>
