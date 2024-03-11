@@ -954,7 +954,7 @@ PODS:
     - React-Core
   - react-native-safe-area-context (4.9.0):
     - React-Core
-  - react-native-unistyles (2.4.0):
+  - react-native-unistyles (2.5.0-rc.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1404,7 +1404,7 @@ SPEC CHECKSUMS:
   react-native-mmkv: 124b22209aacdcd172b6ac39071b9647080f0411
   react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
   react-native-safe-area-context: b97eb6f9e3b7f437806c2ce5983f479f8eb5de4b
-  react-native-unistyles: a853258bcb3736ee3ab0ed2ad2d0715bd6f3b296
+  react-native-unistyles: 8eea18821979ad1b80f6ac6ccff288d18213a5cd
   React-nativeconfig: 1166714a4f7ea57a0df5c2cb44fbc70f98d580f9
   React-NativeModulesApple: 726664e9829eb5eed8170241000e46ead269a05f
   React-perflogger: 0dd9f1725d55f8264b81efadd373fe1d9cca7dc2

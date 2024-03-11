@@ -41,6 +41,9 @@
         "react/function-component-definition":0,
         "object-curly-newline":0,
         "react/jsx-props-no-spreading":0,
-        "import/no-cycle":0
+        "import/no-cycle":0,
+        "@typescript-eslint/no-shadow": ["error"],
+        "no-shadow": 0,
+        "no-undef": 0
       }
 }

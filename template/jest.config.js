@@ -1,14 +1,9 @@
 module.exports = {
 	preset: 'react-native',
-	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 	transformIgnorePatterns: [
-		'node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation|ky)',
+		'node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation|ky|react-redux|@redux/hooks)',
 	],
-	
-	testPathIgnorePatterns: [
-		'/node_modules/', // Ignore all files inside node_modules directory
-		'/react-native-unistyles/', // Ignore the react-native-unistyles package
-	  ],
 	setupFilesAfterEnv: [
 		'./node_modules/react-native-gesture-handler/jestSetup.js',
 		"@testing-library/jest-native/extend-expect",
@@ -18,6 +13,8 @@ module.exports = {
 		'<rootDir>/src/components/**/*.tsx',
 		'<rootDir>/src/App.tsx',
 	],
-	coverageReporters: ['html', 'text', 'text-summary', 'cobertura'],
-	testMatch: ['**/*.test.ts?(x)', '**/*.test.js?(x)']
+	testMatch: ['**/*.test.ts?(x)', '**/*.test.js?(x)'],
+	transform: {
+		'\\.(ts|tsx)$': 'ts-jest',
+	  },
 };

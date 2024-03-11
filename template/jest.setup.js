@@ -2,6 +2,8 @@
 import "react-native-gesture-handler/jestSetup";
 import "@testing-library/jest-native/extend-expect";
 
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
+
 jest.mock("react-native-reanimated", () =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   require("react-native-reanimated/mock"),
