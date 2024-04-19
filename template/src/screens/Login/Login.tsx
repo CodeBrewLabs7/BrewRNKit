@@ -1,17 +1,19 @@
-import { TextContainer, WrapperContainer, ButtonContainer } from "@components/atoms";
-import { CustomTextInput, AuthHeader, RememberMe } from "@components/molecules";
+import { ButtonContainer, TextContainer, WrapperContainer } from "@components/atoms";
+import { AuthHeader, CustomTextInput, RememberMe } from "@components/molecules";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
+import { useCustomPost } from "@hooks/useMutationQuery";
 import type { AuthStackParamList } from "@navigations/AuthStack";
 import type { NavigationProp } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
-import { login } from "@redux/actions/auth";
-import { useDispatch, useSelector } from "@redux/hooks";
+import { useDispatch } from "@redux/hooks";
+import { saveUserData } from "@redux/reducers/auth";
 import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
 import React, { useState } from "react";
-import { Alert, Keyboard, Platform, TouchableWithoutFeedback, View } from "react-native";
+import { Alert, Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
+import { LoginRequestData, LoginResponse } from "./types";
 
 const stylesheet = createStyleSheet(() => ({
   container: {
@@ -26,6 +28,23 @@ const stylesheet = createStyleSheet(() => ({
   },
 }));
 
+
+const alertFunction = (title: string, message: string) => {
+  Alert.alert(
+    title,
+    message,
+    [
+      {
+        text: "Cancel",
+        onPress: () => { },
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => { } },
+    ],
+    { cancelable: false },
+  );
+};
+
 const Login = (): React.JSX.Element => {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
   const [username, setUsername] = useState<string>("kminchelle");
@@ -33,25 +52,22 @@ const Login = (): React.JSX.Element => {
 
   const { styles } = useStyles(stylesheet);
 
-  const { isLoading } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
 
-  const alertFunction = (title: string, message: string) => {
-    Alert.alert(
-      title,
-      message,
-      [
-        {
-          text: "Cancel",
-          onPress: () => {},
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => {} },
-      ],
-      { cancelable: false },
-    );
-  };
+  const { mutate, isPending, error, data, isSuccess } = useCustomPost<LoginResponse, Error, LoginRequestData>(
+    "/auth/login",
+    {
+      onSuccess: ({data}) => {
+        console.log("data",data)
+        dispatch(saveUserData(data))
+      },
+      onError: (error) => {
+        console.log("error", error)
+        alertFunction("Error", "An error occurred");
+      }
+    }
+  );
+
 
   const onLogin = async () => {
     const isValid = validate({
@@ -60,10 +76,7 @@ const Login = (): React.JSX.Element => {
     });
 
     if (isValid === true) {
-      const res = await dispatch(login({ username, password, deviceType: Platform.OS }));
-      if (res.meta.requestStatus === "rejected") {
-        alertFunction("Error", "An error occurred");
-      }
+      mutate({ username, password });
     }
   };
 
@@ -95,7 +108,7 @@ const Login = (): React.JSX.Element => {
             />
 
             <RememberMe onPressForgot={() => alertFunction("Password", "Forgot Password")} />
-            <ButtonContainer isLoading={isLoading} label="LOG_IN" onPress={onLogin} />
+            <ButtonContainer isLoading={isPending} label="LOG_IN" onPress={onLogin} />
           </View>
 
           <View style={styles.bottomView}>
