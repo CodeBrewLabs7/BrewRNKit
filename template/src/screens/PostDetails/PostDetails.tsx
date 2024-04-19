@@ -16,9 +16,8 @@ import { moderateScale, scale, width } from "@utils/scaling";
 import React from "react";
 import { ImageBackground, SafeAreaView, ScrollView, View } from "react-native";
 import { UnistylesRuntime, useStyles } from "react-native-unistyles";
-import stylesheet from "./styles";
 import { useCustomQuery } from "@hooks/useMutationQuery";
-
+import stylesheet from "./styles";
 
 type PostDetailsRouteProp = RouteProp<HomeStackParamList, "PostDetails">;
 

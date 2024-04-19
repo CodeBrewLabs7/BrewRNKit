@@ -13,7 +13,7 @@ import validate from "@utils/validations";
 import React, { useState } from "react";
 import { Alert, Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { LoginRequestData, LoginResponse } from "./types";
+import LoginResponse, { LoginRequestData } from "./types";
 
 const stylesheet = createStyleSheet(() => ({
   container: {
@@ -28,7 +28,6 @@ const stylesheet = createStyleSheet(() => ({
   },
 }));
 
-
 const alertFunction = (title: string, message: string) => {
   Alert.alert(
     title,
@@ -36,10 +35,10 @@ const alertFunction = (title: string, message: string) => {
     [
       {
         text: "Cancel",
-        onPress: () => { },
+        onPress: () => {},
         style: "cancel",
       },
-      { text: "OK", onPress: () => { } },
+      { text: "OK", onPress: () => {} },
     ],
     { cancelable: false },
   );
@@ -54,20 +53,18 @@ const Login = (): React.JSX.Element => {
 
   const dispatch = useDispatch();
 
-  const { mutate, isPending, error, data, isSuccess } = useCustomPost<LoginResponse, Error, LoginRequestData>(
+  const { mutate, isPending } = useCustomPost<LoginResponse, Error, LoginRequestData>(
     "/auth/login",
     {
-      onSuccess: ({data}) => {
-        console.log("data",data)
-        dispatch(saveUserData(data))
+      onSuccess: ({ data }) => {
+        // @ts-expect-error : will fix later
+        dispatch(saveUserData(data));
       },
-      onError: (error) => {
-        console.log("error", error)
+      onError: () => {
         alertFunction("Error", "An error occurred");
-      }
-    }
+      },
+    },
   );
-
 
   const onLogin = async () => {
     const isValid = validate({
