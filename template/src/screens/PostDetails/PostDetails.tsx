@@ -9,7 +9,6 @@ import HeaderComp from "@components/molecules/HeaderComp";
 import Loader from "@components/molecules/Loader";
 import fontFamily from "@constants/fontFamily";
 import imagePath from "@constants/imagePath";
-import useCustomQuery from "@hooks/useCustomQuery";
 import { ProductsData } from "@models/HomeData";
 import { HomeStackParamList } from "@navigations/MainStack";
 import type { RouteProp } from "@react-navigation/native";
@@ -18,6 +17,8 @@ import React from "react";
 import { ImageBackground, SafeAreaView, ScrollView, View } from "react-native";
 import { UnistylesRuntime, useStyles } from "react-native-unistyles";
 import stylesheet from "./styles";
+import { useCustomQuery } from "@hooks/useMutationQuery";
+
 
 type PostDetailsRouteProp = RouteProp<HomeStackParamList, "PostDetails">;
 
