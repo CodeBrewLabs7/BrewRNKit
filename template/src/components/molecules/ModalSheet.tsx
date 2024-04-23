@@ -59,11 +59,6 @@ interface ModalSheetProps extends ModalProps {
   children?: ReactNode;
 }
 
-// Define default props
-const defaultProps = {
-  children: {} as ReactNode,
-};
-
 export interface ModalSheetRef {
   toggleSheet: () => void;
 }
@@ -146,7 +141,5 @@ const ModalSheet = forwardRef<ModalSheetRef, ModalSheetProps>((props, ref) => {
     </Modal>
   );
 });
-
-ModalSheet.defaultProps = defaultProps;
 
 export default React.memo(ModalSheet);

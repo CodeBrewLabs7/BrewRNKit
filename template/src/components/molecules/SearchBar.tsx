@@ -31,11 +31,6 @@ type SectionProps = PropsWithChildren<{
   textStyle?: TextStyle;
 }>;
 
-// Define default props
-const defaultProps = {
-  textStyle: {} as TextStyle,
-  style: {} as ViewStyle,
-};
 const SearchBar = ({ title, style, textStyle }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
 
@@ -47,6 +42,4 @@ const SearchBar = ({ title, style, textStyle }: SectionProps): React.JSX.Element
   );
 };
 
-// Assign default props to the component
-SearchBar.defaultProps = defaultProps;
 export default React.memo(SearchBar);

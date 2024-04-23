@@ -1,10 +1,9 @@
 import RoundImageBorder from "@components/atoms/RoundImageBorder";
-import imagePath from "@constants/imagePath";
 import { useNavigation } from "@react-navigation/native";
 import { moderateScale } from "@utils/scaling";
-import React from "react";
 import type { PropsWithChildren } from "react";
-import { Pressable, View, ViewStyle, ImageSourcePropType } from "react-native";
+import React from "react";
+import { ImageSourcePropType, Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet(() => ({
@@ -24,13 +23,6 @@ type SectionProps = PropsWithChildren<{
   onPressRight?: () => void;
 }>;
 
-const defaultProps = {
-  style: {} as ViewStyle,
-  leftImage: imagePath.icBack as ImageSourcePropType,
-  rightImage: imagePath.icShare as ImageSourcePropType,
-  onPressLeft: undefined,
-  onPressRight: undefined,
-};
 const HeaderComp = ({
   style,
   leftImage,
@@ -53,7 +45,5 @@ const HeaderComp = ({
     </View>
   );
 };
-
-HeaderComp.defaultProps = defaultProps;
 
 export default React.memo(HeaderComp);
