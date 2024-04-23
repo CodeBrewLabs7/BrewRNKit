@@ -1,6 +1,6 @@
-import React from "react";
 import type { PropsWithChildren } from "react";
-import { SafeAreaView, StatusBar, View, ViewStyle } from "react-native";
+import React from "react";
+import { SafeAreaView, StatusBar, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
@@ -15,12 +15,7 @@ type SectionProps = PropsWithChildren<{
   isSafeAreaView?: boolean;
 }>;
 
-const defaultProps = {
-  style: {} as ViewStyle,
-  isSafeAreaView: true as boolean,
-};
-
-const WrapperContainer = ({ children, style, isSafeAreaView }: SectionProps): React.JSX.Element => {
+const WrapperContainer = ({ children, style, isSafeAreaView = true }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   const { theme } = useStyles();
 
@@ -39,7 +34,5 @@ const WrapperContainer = ({ children, style, isSafeAreaView }: SectionProps): Re
     </View>
   );
 };
-
-WrapperContainer.defaultProps = defaultProps;
 
 export default React.memo(WrapperContainer);

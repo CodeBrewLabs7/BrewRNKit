@@ -1,7 +1,7 @@
 import { TextContainer } from "@components/atoms";
 import { moderateScale } from "@utils/scaling";
 import React from "react";
-import { ViewStyle, TextStyle, ActivityIndicator, Pressable, PressableProps } from "react-native";
+import { ActivityIndicator, Pressable, PressableProps, ViewStyle } from "react-native";
 import { UnistylesRuntime, createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
@@ -20,12 +20,6 @@ interface CustomButtonProps extends PressableProps {
   textStyle?: object;
   isLoading?: boolean;
 }
-
-const defaultProps = {
-  textStyle: {} as TextStyle,
-  style: {} as ViewStyle,
-  isLoading: false as boolean,
-};
 
 const ButtonContainer: React.FC<CustomButtonProps> = ({
   label,
@@ -53,7 +47,5 @@ const ButtonContainer: React.FC<CustomButtonProps> = ({
     </Pressable>
   );
 };
-
-ButtonContainer.defaultProps = defaultProps;
 
 export default React.memo(ButtonContainer);

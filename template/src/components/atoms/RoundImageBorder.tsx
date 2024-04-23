@@ -1,6 +1,6 @@
 import { moderateScale } from "@utils/scaling";
 import React from "react";
-import { ImageProps, ImageStyle, ViewStyle, Image as RNImage, View } from "react-native";
+import { ImageProps, Image as RNImage, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
@@ -21,11 +21,6 @@ interface CustomImageProps extends ImageProps {
   viewStyle?: object;
 }
 
-const defaultProps = {
-  imageStyle: {} as ImageStyle,
-  viewStyle: {} as ViewStyle,
-};
-
 // Define the component
 const RoundImageBorder: React.FC<CustomImageProps> = ({ imageStyle, viewStyle, ...props }) => {
   const { styles, theme } = useStyles(stylesheet);
@@ -35,7 +30,5 @@ const RoundImageBorder: React.FC<CustomImageProps> = ({ imageStyle, viewStyle, .
     </View>
   );
 };
-
-RoundImageBorder.defaultProps = defaultProps;
 
 export default React.memo(RoundImageBorder);
