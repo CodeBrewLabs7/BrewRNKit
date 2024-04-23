@@ -1,8 +1,6 @@
 /* eslint-disable */
-import { login } from "@redux/actions/auth";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "@models/User";
-import { setItem } from "src/services/apiService";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface AuthState {
   userData: User;
@@ -35,7 +33,7 @@ const authSlice = createSlice({
     changeFirstTime: (state, action: PayloadAction<boolean>) => {
       state.isFirstTime = action.payload;
     },
-  }
+  },
 });
 
 export const { changeFirstTime, saveUserData } = authSlice.actions;
