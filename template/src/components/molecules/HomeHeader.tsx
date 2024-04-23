@@ -40,13 +40,6 @@ type SectionProps = PropsWithChildren<{
   onPress?: () => void;
 }>;
 
-// Define default props
-const defaultProps = {
-  style: {} as ViewStyle,
-  title: "" as string,
-  onPress: undefined as (() => void) | undefined,
-};
-
 const HeaderComp = ({ title, onPress, style }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   return (
@@ -65,7 +58,5 @@ const HeaderComp = ({ title, onPress, style }: SectionProps): React.JSX.Element 
     </View>
   );
 };
-
-HeaderComp.defaultProps = defaultProps;
 
 export default React.memo(HeaderComp);

@@ -44,6 +44,7 @@
         "import/no-cycle":0,
         "@typescript-eslint/no-shadow": ["error"],
         "no-shadow": 0,
-        "no-undef": 0
+        "no-undef": 0,
+        "react/require-default-props":0
       }
 }

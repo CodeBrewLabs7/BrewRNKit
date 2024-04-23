@@ -3,8 +3,8 @@ import fontFamily from "@constants/fontFamily";
 import { moderateScale, scale } from "@utils/scaling";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Pressable, TextInput, View, ImageSourcePropType } from "react-native";
-import type { TextInputProps, ViewStyle } from "react-native";
+import type { TextInputProps } from "react-native";
+import { ImageSourcePropType, Pressable, TextInput, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import ImageContainer from "../atoms/ImageContainer";
 
@@ -43,14 +43,6 @@ interface CustomTextInputProps extends TextInputProps {
   style?: object;
   onPressRight?: () => void;
 }
-
-// Define default props
-const defaultProps = {
-  rightImage: null as ImageSourcePropType | null,
-  leftImage: null as ImageSourcePropType | null,
-  style: {} as ViewStyle,
-  onPressRight: undefined,
-};
 
 const CustomTextInput: React.FC<CustomTextInputProps> = ({
   placeholder,
@@ -106,7 +98,5 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
     </>
   );
 };
-
-CustomTextInput.defaultProps = defaultProps;
 
 export default React.memo(CustomTextInput);

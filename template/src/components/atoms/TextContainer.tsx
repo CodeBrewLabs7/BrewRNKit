@@ -2,7 +2,7 @@ import fontFamily from "@constants/fontFamily";
 import { scale } from "@utils/scaling";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Text, TextProps, TextStyle } from "react-native";
+import { Text, TextProps } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
@@ -19,11 +19,6 @@ interface TextContainterProps extends TextProps {
   isDynamicText?: boolean;
 }
 
-const defaultProps = {
-  style: {} as TextStyle,
-  isDynamicText: false as boolean,
-};
-
 const TextContainer: React.FC<TextContainterProps> = ({
   text,
   isDynamicText = false,
@@ -38,7 +33,5 @@ const TextContainer: React.FC<TextContainterProps> = ({
     </Text>
   );
 };
-
-TextContainer.defaultProps = defaultProps;
 
 export default React.memo(TextContainer);
