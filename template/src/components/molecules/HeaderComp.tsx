@@ -1,4 +1,5 @@
 import RoundImageBorder from "@components/atoms/RoundImageBorder";
+import imagePath from "@constants/imagePath";
 import { useNavigation } from "@react-navigation/native";
 import { moderateScale } from "@utils/scaling";
 import type { PropsWithChildren } from "react";
@@ -25,8 +26,8 @@ type SectionProps = PropsWithChildren<{
 
 const HeaderComp = ({
   style,
-  leftImage,
-  rightImage,
+  leftImage = imagePath.icBack,
+  rightImage = imagePath.icShare,
   onPressLeft,
   onPressRight,
 }: SectionProps): React.JSX.Element => {
