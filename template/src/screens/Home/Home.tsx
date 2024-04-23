@@ -4,7 +4,7 @@ import HomeHeader from "@components/molecules/HomeHeader";
 import HomeListHeader from "@components/molecules/HomeListHeader";
 import HomeListItems from "@components/molecules/HomeListItems";
 import ModalSheet, { ModalSheetRef } from "@components/molecules/ModalSheet";
-import useCustomQuery from "@hooks/useCustomQuery";
+import { useCustomQuery } from "@hooks/useMutationQuery";
 import { HomeData } from "@models/HomeData";
 import { HomeStackParamList } from "@navigations/MainStack";
 import { NavigationProp, useNavigation } from "@react-navigation/native";

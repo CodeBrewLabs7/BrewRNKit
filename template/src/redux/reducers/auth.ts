@@ -35,20 +35,7 @@ const authSlice = createSlice({
     changeFirstTime: (state, action: PayloadAction<boolean>) => {
       state.isFirstTime = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(login.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.isLoading = false;
-      setItem("userData", action.payload);
-      state.userData = action.payload;
-    });
-    builder.addCase(login.rejected, (state) => {
-      state.isLoading = false;
-    });
-  },
+  }
 });
 
 export const { changeFirstTime, saveUserData } = authSlice.actions;

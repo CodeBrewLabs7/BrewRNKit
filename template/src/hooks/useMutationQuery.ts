@@ -1,5 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import {
+  UseMutationOptions,
+  UseMutationResult,
+  useMutation,
+  useQuery,
+} from "@tanstack/react-query";
+import axios, { AxiosResponse } from "axios";
 import { getItem } from "src/services/apiService";
 import { APIS } from "src/services/routes";
 
@@ -20,7 +25,7 @@ axiosInstance.interceptors.request.use((config) => {
   return modifiedConfig;
 });
 
-const useCustomQuery = <T>(url: APIS, query = "") =>
+export const useCustomQuery = <T>(url: APIS, query = "") =>
   // eslint-disable-next-line
   useQuery<T>({
     queryKey: [url + query],
@@ -31,4 +36,15 @@ const useCustomQuery = <T>(url: APIS, query = "") =>
     retry: 3,
   });
 
-export default useCustomQuery;
+interface MutationData {}
+
+export const useCustomPost = <TData, TError, TVariables = MutationData, TContext = unknown>(
+  url: APIS,
+  options?: UseMutationOptions<AxiosResponse<TData>, TError, TVariables, TContext>,
+): UseMutationResult<AxiosResponse<TData>, TError, TVariables, TContext> => {
+  const result = useMutation<AxiosResponse<TData>, TError, TVariables, TContext>({
+    ...options,
+    mutationFn: (variables: TVariables) => axiosInstance.post<TData>(url, variables),
+  });
+  return result;
+};

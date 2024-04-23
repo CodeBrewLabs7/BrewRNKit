@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { WrapperContainer } from "@components/atoms";
 import CustomButton from "@components/atoms/ButtonContainer";
 import { CustomTextInput } from "@components/molecules";
@@ -7,16 +6,14 @@ import RememberMe from "@components/molecules/RememberMe";
 import imagePath from "@constants/imagePath";
 import type { AuthStackParamList } from "@navigations/AuthStack";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { signup } from "@redux/actions/auth";
-import { useSelector } from "@redux/hooks";
-import type { AppDispatch } from "@redux/store";
 import { moderateScale, verticalScale } from "@utils/scaling";
 import validate from "@utils/validations";
-
-import { Alert, Platform, View } from "react-native";
+import React, { useState } from "react";
+import { useCustomPost } from "@hooks/useMutationQuery";
+import { Alert, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { useDispatch } from "react-redux";
+import SignupResponse, { SignupRequestData } from "./type";
 
 // no user before defined
 const stylesheet = createStyleSheet(() => ({
@@ -32,10 +29,24 @@ const stylesheet = createStyleSheet(() => ({
   },
 }));
 
+const alertFunction = (title: string, message: string) => {
+  Alert.alert(
+    title,
+    message,
+    [
+      {
+        text: "Cancel",
+        onPress: () => {},
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => {} },
+    ],
+    { cancelable: false },
+  );
+};
+
 function Signup(): React.JSX.Element {
   const navigation = useNavigation<NavigationProp<AuthStackParamList>>();
-  const { isLoading } = useSelector((state) => state.auth);
-
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -43,23 +54,17 @@ function Signup(): React.JSX.Element {
 
   const { styles } = useStyles(stylesheet);
 
-  const dispatch: AppDispatch = useDispatch();
-
-  const alertFunction = (title: string, message: string) => {
-    Alert.alert(
-      title,
-      message,
-      [
-        {
-          text: "Cancel",
-          onPress: () => {},
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => {} },
-      ],
-      { cancelable: false },
-    );
-  };
+  const { mutate, isPending } = useCustomPost<SignupResponse, Error, SignupRequestData>(
+    "/users/add",
+    {
+      onSuccess: () => {
+        navigation.goBack();
+      },
+      onError: () => {
+        alertFunction("Error", "An error occurred");
+      },
+    },
+  );
 
   const onSignup = async () => {
     const isValid = validate({
@@ -69,22 +74,12 @@ function Signup(): React.JSX.Element {
     });
 
     if (isValid === true) {
-      const res = await dispatch(
-        signup({
-          name,
-          email,
-          username: "xyz",
-          password,
-          deviceType: Platform.OS,
-        }),
-      );
-      // console.log("res+++", res);
-      if (res.meta.requestStatus === "fulfilled") {
-        navigation.goBack();
-      } else {
-        // @ts-expect-error : will handle later
-        alertFunction("Success", res.payload?.response.data.error || "");
-      }
+      mutate({
+        name,
+        email,
+        username: "xyz",
+        password,
+      });
       return;
     }
     // @ts-expect-error : will handle later
@@ -123,7 +118,7 @@ function Signup(): React.JSX.Element {
             onPressRight={() => setSecureTextEntry(!secureTextEntry)}
           />
           <RememberMe onPressForgot={() => alertFunction("Password", "Forgot Password")} />
-          <CustomButton isLoading={isLoading} label="SIGNUP" onPress={onSignup} />
+          <CustomButton isLoading={isPending} label="SIGNUP" onPress={onSignup} />
         </View>
       </KeyboardAwareScrollView>
     </WrapperContainer>
