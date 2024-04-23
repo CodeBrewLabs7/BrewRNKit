@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* BrewRNKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BrewRNKitTests.m */; };
+		07EA4D215EF3EA0EEEAF5F41 /* libPods-BrewRNKit-BrewRNKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF620B7F3E038F2B564C7B2 /* libPods-BrewRNKit-BrewRNKitTests.a */; };
 		10945B7A370C4F979FC744F9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C79FBF2FD66E4B1A973DEF64 /* Poppins-SemiBold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2F66ED031A09407BA783F1EB /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4366BC219D5E4B178694C01A /* Poppins-Medium.ttf */; };
-		3D7181E44FEF303FD95D7BE9 /* libPods-BrewRNKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29235215883DB9936B504703 /* libPods-BrewRNKit.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A6B6B1ECD6124C3B8D10B023 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D1C4B285DD8749CDB0473E88 /* Poppins-Bold.ttf */; };
 		AD4069E5E9CF497AA6567CF7 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76629DD1E54D4F32B68C488B /* Poppins-Regular.ttf */; };
 		B9D5D27D645342D9AA63808E /* futura_book.otf in Resources */ = {isa = PBXBuildFile; fileRef = E49C4F7F7F3A48EFB8A8B18F /* futura_book.otf */; };
-		CD66D5B5754D46E4C9C16831 /* libPods-BrewRNKit-BrewRNKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7824207A2874B9136B44351 /* libPods-BrewRNKit-BrewRNKitTests.a */; };
+		E4FA9144AEE7232B65A1D6A9 /* libPods-BrewRNKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF2A88EFBD9126A90B7C6 /* libPods-BrewRNKit.a */; };
 		EB17F6C2DD454BA9A8A2E218 /* futura_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 823FE5138BB149D8920DA2E5 /* futura_medium.otf */; };
 /* End PBXBuildFile section */
 
@@ -36,22 +36,23 @@
 		00E356EE1AD99517003FC87E /* BrewRNKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewRNKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* BrewRNKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrewRNKitTests.m; sourceTree = "<group>"; };
+		061CF2A88EFBD9126A90B7C6 /* libPods-BrewRNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrewRNKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		072F9F3CA8739D402E99A209 /* Pods-BrewRNKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit.debug.xcconfig"; path = "Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit.debug.xcconfig"; sourceTree = "<group>"; };
+		10BAFF215374A5B4C24078A8 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit-BrewRNKitTests.release.xcconfig"; path = "Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* BrewRNKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrewRNKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BrewRNKit/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = BrewRNKit/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BrewRNKit/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BrewRNKit/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BrewRNKit/main.m; sourceTree = "<group>"; };
-		258CED93B71FC58E2112152C /* Pods-BrewRNKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit.release.xcconfig"; path = "Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit.release.xcconfig"; sourceTree = "<group>"; };
-		29235215883DB9936B504703 /* libPods-BrewRNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrewRNKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = BrewRNKit/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		4366BC219D5E4B178694C01A /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		4D4AE10543A892CD0B1E44FF /* Pods-BrewRNKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit.release.xcconfig"; path = "Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit.release.xcconfig"; sourceTree = "<group>"; };
 		76629DD1E54D4F32B68C488B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		7B942B8DB4DDBD65D4769394 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit-BrewRNKitTests.release.xcconfig"; path = "Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		7BF620B7F3E038F2B564C7B2 /* libPods-BrewRNKit-BrewRNKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrewRNKit-BrewRNKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BrewRNKit/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		823FE5138BB149D8920DA2E5 /* futura_medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = futura_medium.otf; path = ../src/assets/fonts/futura_medium.otf; sourceTree = "<group>"; };
-		8FEF5EC569E8CBAE49432219 /* Pods-BrewRNKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit.debug.xcconfig"; path = "Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit.debug.xcconfig"; sourceTree = "<group>"; };
-		B6CAB659777B282DB481B593 /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig"; path = "Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B7824207A2874B9136B44351 /* libPods-BrewRNKit-BrewRNKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrewRNKit-BrewRNKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C00E9588AAF68218DB08EF5C /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig"; path = "Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C79FBF2FD66E4B1A973DEF64 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		D1C4B285DD8749CDB0473E88 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		E49C4F7F7F3A48EFB8A8B18F /* futura_book.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = futura_book.otf; path = ../src/assets/fonts/futura_book.otf; sourceTree = "<group>"; };
@@ -63,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD66D5B5754D46E4C9C16831 /* libPods-BrewRNKit-BrewRNKitTests.a in Frameworks */,
+				07EA4D215EF3EA0EEEAF5F41 /* libPods-BrewRNKit-BrewRNKitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D7181E44FEF303FD95D7BE9 /* libPods-BrewRNKit.a in Frameworks */,
+				E4FA9144AEE7232B65A1D6A9 /* libPods-BrewRNKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +105,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 			);
 			name = BrewRNKit;
 			sourceTree = "<group>";
@@ -112,8 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				29235215883DB9936B504703 /* libPods-BrewRNKit.a */,
-				B7824207A2874B9136B44351 /* libPods-BrewRNKit-BrewRNKitTests.a */,
+				061CF2A88EFBD9126A90B7C6 /* libPods-BrewRNKit.a */,
+				7BF620B7F3E038F2B564C7B2 /* libPods-BrewRNKit-BrewRNKitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,10 +168,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8FEF5EC569E8CBAE49432219 /* Pods-BrewRNKit.debug.xcconfig */,
-				258CED93B71FC58E2112152C /* Pods-BrewRNKit.release.xcconfig */,
-				B6CAB659777B282DB481B593 /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */,
-				7B942B8DB4DDBD65D4769394 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */,
+				072F9F3CA8739D402E99A209 /* Pods-BrewRNKit.debug.xcconfig */,
+				4D4AE10543A892CD0B1E44FF /* Pods-BrewRNKit.release.xcconfig */,
+				C00E9588AAF68218DB08EF5C /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */,
+				10BAFF215374A5B4C24078A8 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -181,12 +183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BrewRNKitTests" */;
 			buildPhases = (
-				0AE5BCF74DA360E08BB45053 /* [CP] Check Pods Manifest.lock */,
+				B522EAEB418DAE1071632499 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				12F7436B94D3A915C822ECBD /* [CP] Embed Pods Frameworks */,
-				DA5BDA4ABC3D906F6FCBE3E7 /* [CP] Copy Pods Resources */,
+				619F1C963A785568D71D90B3 /* [CP] Embed Pods Frameworks */,
+				9957F5BA2513DA119BEF2E9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,13 +204,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BrewRNKit" */;
 			buildPhases = (
-				A0C3A20AF338947099F29ED6 /* [CP] Check Pods Manifest.lock */,
+				6BA8F903FE30B7774A98B443 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				5F546FD4C41C38BBB1B110E3 /* [CP] Embed Pods Frameworks */,
-				03AB6E12D6860C74D5C7F934 /* [CP] Copy Pods Resources */,
+				670717DF6F6FB7C9BB6E5D81 /* [CP] Embed Pods Frameworks */,
+				76D4186326269FCF4F9A99DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,48 +297,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		03AB6E12D6860C74D5C7F934 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0AE5BCF74DA360E08BB45053 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BrewRNKit-BrewRNKitTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		12F7436B94D3A915C822ECBD /* [CP] Embed Pods Frameworks */ = {
+		619F1C963A785568D71D90B3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +316,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5F546FD4C41C38BBB1B110E3 /* [CP] Embed Pods Frameworks */ = {
+		670717DF6F6FB7C9BB6E5D81 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -370,7 +333,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A0C3A20AF338947099F29ED6 /* [CP] Check Pods Manifest.lock */ = {
+		6BA8F903FE30B7774A98B443 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,7 +355,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA5BDA4ABC3D906F6FCBE3E7 /* [CP] Copy Pods Resources */ = {
+		76D4186326269FCF4F9A99DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit/Pods-BrewRNKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9957F5BA2513DA119BEF2E9C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -407,6 +387,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrewRNKit-BrewRNKitTests/Pods-BrewRNKit-BrewRNKitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B522EAEB418DAE1071632499 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BrewRNKit-BrewRNKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -442,9 +444,10 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6CAB659777B282DB481B593 /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */;
+			baseConfigurationReference = C00E9588AAF68218DB08EF5C /* Pods-BrewRNKit-BrewRNKitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEAD_CODE_STRIPPING = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -456,11 +459,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(SDKROOT)/System/iOSSupport/usr/lib/swift",
+					"$(inherited)",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 					"$(inherited)",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrewRNKit.app/BrewRNKit";
@@ -469,10 +478,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B942B8DB4DDBD65D4769394 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */;
+			baseConfigurationReference = 10BAFF215374A5B4C24078A8 /* Pods-BrewRNKit-BrewRNKitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = BrewRNKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -480,11 +490,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(SDKROOT)/System/iOSSupport/usr/lib/swift",
+					"$(inherited)",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 					"$(inherited)",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrewRNKit.app/BrewRNKit";
@@ -493,16 +509,22 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FEF5EC569E8CBAE49432219 /* Pods-BrewRNKit.debug.xcconfig */;
+			baseConfigurationReference = 072F9F3CA8739D402E99A209 /* Pods-BrewRNKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BrewRNKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(SDKROOT)/System/iOSSupport/usr/lib/swift",
+					"$(inherited)",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
@@ -510,6 +532,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BrewRNKit;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -523,15 +546,21 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 258CED93B71FC58E2112152C /* Pods-BrewRNKit.release.xcconfig */;
+			baseConfigurationReference = 4D4AE10543A892CD0B1E44FF /* Pods-BrewRNKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = BrewRNKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/lib/swift",
+					"$(SDKROOT)/System/iOSSupport/usr/lib/swift",
+					"$(inherited)",
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
@@ -539,6 +568,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRESERVE_DEAD_CODE_INITS_AND_TERMS = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BrewRNKit;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -553,6 +583,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -580,6 +611,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CXX = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
@@ -599,6 +631,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -617,6 +651,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
@@ -629,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = "";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -656,6 +692,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				CXX = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
@@ -668,6 +705,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD = "";
+				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -685,6 +724,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
+					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
